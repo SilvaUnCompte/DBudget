@@ -1,4 +1,4 @@
-{include file='index.tpl'}
+<?php require "helpers/header.php"?>
 
 <link rel="stylesheet" href="/public/styles/pages/login/login.css">
 

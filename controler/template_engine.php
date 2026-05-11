@@ -15,3 +15,5 @@ if (!isset($_SESSION['email'])) {
     $smarty->display("login.tpl");
     exit();
 }
+
+

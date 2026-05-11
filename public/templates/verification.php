@@ -1,4 +1,4 @@
-{include file='helpers/header.tpl'}
+<?php require "helpers/header.php"?>
 
 <link rel="stylesheet" href="/public/styles/pages/analytics/analytics.css">
 <link rel="stylesheet" href="/public/styles/pages/budget/budget.css">
@@ -62,4 +62,4 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/public/js/verification.js" type="text/javascript"></script>
 
-{include file="helpers/footer.tpl"}
+<?php require "helpers/footer.php"?>
