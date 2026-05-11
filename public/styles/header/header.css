@@ -76,7 +76,30 @@ header #navicon {
   padding: 0;
   padding-top: 90px;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
 }
+
+#option-menu {
+  margin-top: auto;
+  margin-bottom: 110px;
+}
+
+#option-menu a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+}
+
+#option-menu img {
+  width: 4vh;
+  max-width: 40px;
+  min-width: 20px;
+  height: auto;
+  filter: invert(1);
+}
+
 #side-menu .corner {
   background-color: #212147;
   position: absolute;
@@ -84,6 +107,7 @@ header #navicon {
   width: 175px;
   height: 80px;
 }
+
 #side-menu a {
   color: #fff;
   text-decoration: none;
@@ -109,4 +133,10 @@ footer {
   #navicon {
     display: block !important;
   }
+  #option-menu img {
+  width: 40px;
+  height: 40px;
+  margin-left: 20%;
+  }
+
 }/*# sourceMappingURL=header.css.map */
