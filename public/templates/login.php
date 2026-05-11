@@ -21,15 +21,15 @@
                     <a href="#good-luck-bro">Forget Password?</a>
                 </div>
 
-                {if $error == (1)}
+                <?php if ($error == 1): ?>
                     <p class="error">
                         Email or password incorrect
                     </p>
-                {elseif $error == (2)}
+                <?php elseif ($error == 2): ?>
                     <p class="success">
                         Password saved successfully
                     </p>
-                {/if}
+                <?php endif; ?>
 
                 <input type="submit" value="Login">
                 <div class="register">
