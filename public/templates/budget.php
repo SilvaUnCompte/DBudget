@@ -20,15 +20,15 @@
             <fieldset id="checking-account-fieldset">
                 <legend>Account info</legend>
                 <div class="row-field">
-                    <label for="account-incomes">month incomes</label>
+                    <label for="account-incomes">Month incomes</label>
                     <span><input type="text" name="account-incomes" id="account-incomes" disabled>€</span>
                 </div>
                 <div class="row-field">
-                    <label for="account-expenses">month expenses</label>
+                    <label for="account-expenses">Month expenses</label>
                     <span><input type="text" name="account-expenses" id="account-expenses" disabled>€</span>
                 </div>
                 <div class="row-field">
-                    <label for="account-remains">month remains</label>
+                    <label for="account-remains">Month remains</label>
                     <span><input type="text" name="account-remains" id="account-remains" disabled>€</span>
                 </div>
                 <div class="row-field">
