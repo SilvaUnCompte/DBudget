@@ -10,4 +10,4 @@ if (!isset($_SESSION['email'])) {
 $title = "Budget";
 $page_name = "Budget";
 
-require $_SERVER['DOCUMENT_ROOT'] . '/Epargne-Controle/public/templates/budget.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/budget.php';

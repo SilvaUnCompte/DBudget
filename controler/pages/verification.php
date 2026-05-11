@@ -10,4 +10,4 @@ if (!isset($_SESSION['email'])) {
 $title = "Verification";
 $page_name = "Verification";
 
-require $_SERVER['DOCUMENT_ROOT'] . '/Epargne-Controle/public/templates/verification.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/verification.php';

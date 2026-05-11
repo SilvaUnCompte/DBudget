@@ -10,4 +10,4 @@ if (!isset($_SESSION['email'])) {
 $title = "Operations";
 $page_name = "Operations";
 
-require $_SERVER['DOCUMENT_ROOT'] . '/Epargne-Controle/public/templates/operations.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/operations.php';

@@ -10,4 +10,4 @@ if (!isset($_SESSION['email'])) {
 $title = "Analytics";
 $page_name = "Analytics";
 
-require $_SERVER['DOCUMENT_ROOT'] . '/Epargne-Controle/public/templates/analytics.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/analytics.php';
