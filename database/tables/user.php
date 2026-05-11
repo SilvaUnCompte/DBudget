@@ -113,12 +113,10 @@ class User
             $user->setSalt($new_password['salt']);
             $user->update();
 
-            require($_SERVER['DOCUMENT_ROOT'] . "/assets/vendors/smarty/libs/Smarty.class.php");
-            $smarty = new Smarty();
-            $smarty->setTemplateDir($_SERVER['DOCUMENT_ROOT'] . '/public/templates/');
-            $smarty->assign("title", "Login");
-            $smarty->assign("error", 2);
-            $smarty->display("login.php");
+            if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+            $title = "Login";
+            $error = 2;
+            require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/login.php';
         }
 
         return self::checkPassword($password, $salt, $hash);
