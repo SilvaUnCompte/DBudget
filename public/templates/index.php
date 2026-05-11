@@ -13,29 +13,29 @@
                 <div class="col col-4">Category</div>
             </li>
             <div id="datasheet">
-                {for $i = 0; $i < 14; $i++}
+                <?php for ($i = 0; $i < 14; $i++): ?>
                     <li class="table-row">
                         <div class="col col-1" data-label="Date"> --- </div>
                         <div class="col col-2" data-label="Label"> --- </div>
                         <div class="col col-3" data-label="Amount"> --- </div>
                         <div class="col col-4" data-label="Category"> --- </div>
                     </li>
-                {/for}
+                <?php endfor; ?>
             </div>
         </ul>
         <a id="create-transfer" class="valide_button noselect" href="/controler/pages/operations.php">Add Operation</a>
     </section>
 
-    {* col gauche avec liste mouvement bancaire récent X dernier à partir de date ajd *}
+    <?php /* col gauche avec liste mouvement bancaire récent X dernier à partir de date ajd */ ?>
 
     <section class="container">
         <section>
-            {* mini zone compte épargne *}
+            <?php /* mini zone compte épargne */ ?>
             <div style="width: 100%;"><canvas id="overview-savings-account"></canvas></div>
         </section>
 
         <section>
-            {* camembert budget du mois *}
+            <?php /* camembert budget du mois */ ?>
             <div style="width: 70%;"><canvas id="overview-monthly-budget"></canvas></div>
         </section>
     </section>

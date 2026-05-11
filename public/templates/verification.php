@@ -28,7 +28,7 @@
                 <div class="col col-5">Actions</div>
             </li>
             <div id="datasheet">
-                {for $i = 0; $i < 14; $i++}
+                <?php for ($i = 0; $i < 14; $i++): ?>
                     <li class="table-row">
                         <div class="col col-1" data-label="Date"> --- </div>
                         <div class="col col-2" data-label="Label"> --- </div>
@@ -36,11 +36,11 @@
                         <div class="col col-4" data-label="Category"> --- </div>
                         <div class="col col-5" data-label="Actions"></div>
                     </li>
-                {/for}
+                <?php endfor; ?>
             </div>
         </ul>
 
-        {* bouton creer une nouvelle opération et bouton confirmer delete *}
+        <?php /* bouton creer une nouvelle opération et bouton confirmer delete */ ?>
         <div class="row-field">
             <a id="add-operation" class="valide_button noselect" onclick="open_new_operation_tab()">Add missing
                 operation</a>

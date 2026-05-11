@@ -67,7 +67,7 @@
         </div>
     </section>
 
-    {* <fieldset class="analytics-form">
+    <?php /* <fieldset class="analytics-form">
         <div class="row-field">
             <select name="selected-savings-account" id="selected-savings-account">
                 <option value="0"> Select a savings account </option>
@@ -80,7 +80,7 @@
             <canvas id="savings-account-chart" style="height: 500px; width: 100%;">Your browser does not support the
                 canvas element.</canvas>
         </div>
-    </section> *}
+    </section> */ ?>
 
     <section class="dashboard">
         <section class="container">
@@ -92,14 +92,14 @@
                     <div class="col col-4">Category</div>
                 </li>
                 <div id="datasheet" class="budget-account-div">
-                    {for $i = 0; $i < 14; $i++}
+                    <?php for ($i = 0; $i < 14; $i++): ?>
                         <li class="table-row">
                             <div class="col col-1" data-label="Date"> --- </div>
                             <div class="col col-2" data-label="Label"> --- </div>
                             <div class="col col-3" data-label="Amount"> --- </div>
                             <div class="col col-4" data-label="Category"> --- </div>
                         </li>
-                    {/for}
+                    <?php endfor; ?>
                 </div>
             </ul>
         </section>
