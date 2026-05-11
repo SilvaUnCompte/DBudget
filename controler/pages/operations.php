@@ -1,9 +1,13 @@
 <?php
 
-# Don't change
-require($_SERVER['DOCUMENT_ROOT']."/controler/template_engine.php");
+if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
-# Can be change
-$smarty->assign("title", "Operations");
-$smarty->assign("page_name", "Operations");
-$smarty->display("operations.tpl");
+if (!isset($_SESSION['email'])) {
+    header('Location: /controler/login/login.php');
+    exit();
+}
+
+$title = "Operations";
+$page_name = "Operations";
+
+require $_SERVER['DOCUMENT_ROOT'] . '/Epargne-Controle/public/templates/operations.php';

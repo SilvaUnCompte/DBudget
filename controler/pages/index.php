@@ -1,9 +1,11 @@
 <?php
 
-# Don't change
-require($_SERVER['DOCUMENT_ROOT']."/controler/template_engine.php");
+// Démarrage de session
+if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
-# Can be change
-$smarty->assign("title", "Home");
-$smarty->assign("page_name", "Overview");
-$smarty->display("index.tpl");
+// Variables de la page
+$title = "Home";
+$page_name = "Overview";
+
+// Affichage du template
+require $_SERVER['DOCUMENT_ROOT'] . '/Epargne-Controle/public/templates/index.php';

@@ -1,9 +1,13 @@
 <?php
 
-# Don't change
-require($_SERVER['DOCUMENT_ROOT']."/controler/template_engine.php");
+if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
-# Can be change
-$smarty->assign("title", "Verification");
-$smarty->assign("page_name", "Verification");
-$smarty->display("verification.tpl");
+if (!isset($_SESSION['email'])) {
+    header('Location: /controler/login/login.php');
+    exit();
+}
+
+$title = "Verification";
+$page_name = "Verification";
+
+require $_SERVER['DOCUMENT_ROOT'] . '/Epargne-Controle/public/templates/verification.php';

@@ -118,7 +118,7 @@ class User
             $smarty->setTemplateDir($_SERVER['DOCUMENT_ROOT'] . '/public/templates/');
             $smarty->assign("title", "Login");
             $smarty->assign("error", 2);
-            $smarty->display("login.tpl");
+            $smarty->display("login.php");
         }
 
         return self::checkPassword($password, $salt, $hash);

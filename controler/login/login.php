@@ -22,7 +22,7 @@ if (isset($_GET['input_email']) && isset($_GET['input_password'])) {
 		$smarty->setTemplateDir($_SERVER['DOCUMENT_ROOT'] . '/public/templates/');
 		$smarty->assign("title", "Login");
 		$smarty->assign("error", 1);
-		$smarty->display("login.tpl");
+		$smarty->display("login.php");
 	}
 } else {
 	echo "Erreur d'authentification, champs incomplets";
