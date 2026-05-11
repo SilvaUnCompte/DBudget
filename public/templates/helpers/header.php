@@ -48,6 +48,7 @@
 		<li><a href="/controler/pages/operations.php">Operations</a></li>
 		<li><a href="/controler/pages/verification.php">Verification</a></li>
 		<li><a href="/controler/pages/events.php">Events</a></li>
+		<li id="option-menu"><a href="/controler/pages/option.php"><img src="/assets/images/option.png" alt="options" loading="lazy"></a></li>
 </ul>
 
 <img id="loading-gif" src="/assets/images/load.gif" alt="loading">
