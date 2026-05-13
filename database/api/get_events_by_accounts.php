@@ -2,15 +2,11 @@
 header('Content-Type: application/json');
 
 require($_SERVER['DOCUMENT_ROOT'] . '/database/connexion.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/controler/helpers/auth.php');
 
 
-// Security need to be improved !!!!
-if (session_status() !== PHP_SESSION_ACTIVE) session_start();
-
-if (!isset($_SESSION['email'])) {
-    echo json_encode(['error' => 'Not logged']);
-    exit;
-}
+// Security
+requireLoginApi();
 
 $arg = json_decode($_GET["accounts"]);
 
