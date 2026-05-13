@@ -1,4 +1,3 @@
-{include file='helpers/header.tpl'}
 
 <link rel="stylesheet" href="/public/styles/pages/analytics/analytics.css">
 <link rel="stylesheet" href="/public/styles/pages/budget/budget.css">
@@ -20,15 +19,15 @@
             <fieldset id="checking-account-fieldset">
                 <legend>Account info</legend>
                 <div class="row-field">
-                    <label for="account-incomes">month incomes</label>
+                    <label for="account-incomes">Month incomes</label>
                     <span><input type="text" name="account-incomes" id="account-incomes" disabled>€</span>
                 </div>
                 <div class="row-field">
-                    <label for="account-expenses">month expenses</label>
+                    <label for="account-expenses">Month expenses</label>
                     <span><input type="text" name="account-expenses" id="account-expenses" disabled>€</span>
                 </div>
                 <div class="row-field">
-                    <label for="account-remains">month remains</label>
+                    <label for="account-remains">Month remains</label>
                     <span><input type="text" name="account-remains" id="account-remains" disabled>€</span>
                 </div>
                 <div class="row-field">
@@ -66,22 +65,7 @@
                 canvas element.</canvas>
         </div>
     </section>
-
-    {* <fieldset class="analytics-form">
-        <div class="row-field">
-            <select name="selected-savings-account" id="selected-savings-account">
-                <option value="0"> Select a savings account </option>
-            </select>
-            <input type="number" min="1" max="60" name="selected-duration" id="selected-duration" value="3"> years
-        </div>
-    </fieldset>
-    <section class="analytics-charts">
-        <div id="savings-account-div">
-            <canvas id="savings-account-chart" style="height: 500px; width: 100%;">Your browser does not support the
-                canvas element.</canvas>
-        </div>
-    </section> *}
-
+    
     <section class="dashboard">
         <section class="container">
             <ul class="responsive-table">
@@ -92,14 +76,14 @@
                     <div class="col col-4">Category</div>
                 </li>
                 <div id="datasheet" class="budget-account-div">
-                    {for $i = 0; $i < 14; $i++}
+                    <?php for ($i = 0; $i < 14; $i++): ?>
                         <li class="table-row">
                             <div class="col col-1" data-label="Date"> --- </div>
                             <div class="col col-2" data-label="Label"> --- </div>
                             <div class="col col-3" data-label="Amount"> --- </div>
                             <div class="col col-4" data-label="Category"> --- </div>
                         </li>
-                    {/for}
+                    <?php endfor; ?>
                 </div>
             </ul>
         </section>
@@ -126,4 +110,3 @@
 
 <script src="/public/js/budget.js" type="text/javascript"></script>
 
-{include file="helpers/footer.tpl"}

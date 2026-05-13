@@ -2,29 +2,26 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/database/tables/user.php');
 
+if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+$title = "Login";
+
 if (isset($_GET['input_email']) && isset($_GET['input_password'])) {
 
-	$email = $_GET['input_email'];
-	$password = $_GET['input_password'];
+    $email = $_GET['input_email'];
+    $password = $_GET['input_password'];
 
-	if (User::checkLogin($email, $password)) {
+    if (User::checkLogin($email, $password)) {
 
-		if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+        $user = new User($email);
+        $_SESSION['email'] = $email;
+        $_SESSION['username'] = $user->getUsername();
 
-		$user = new User($email);
-		$_SESSION['email'] = $email;
-		$_SESSION['username'] = $user->getUsername();
-
-		header("Location: /controler/pages/index.php");
-	} else {
-		require($_SERVER['DOCUMENT_ROOT'] . "/assets/vendors/smarty/libs/Smarty.class.php");
-		$smarty = new Smarty();
-		$smarty->setTemplateDir($_SERVER['DOCUMENT_ROOT'] . '/public/templates/');
-		$smarty->assign("title", "Login");
-		$smarty->assign("error", 1);
-		$smarty->display("login.tpl");
-	}
+        header("Location: /controler/pages/index.php");
+    } else {
+        $error = 1;
+        require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/login.php';
+    }
 } else {
-	echo "Erreur d'authentification, champs incomplets";
-	exit();
+    $error = 0;
+    require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/login.php';
 }

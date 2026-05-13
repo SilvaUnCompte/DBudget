@@ -3,7 +3,12 @@
 # Don't change
 require($_SERVER['DOCUMENT_ROOT']."/controler/template_engine.php");
 
-# Can be change
-$smarty->assign("title", "Home");
-$smarty->assign("page_name", "Overview");
-$smarty->display("index.tpl");
+// Starting Session
+requireLogin();
+
+// Variables page
+$title = "Home";
+$page_name = "Overview";
+
+// Show Template
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/index.php';

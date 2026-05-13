@@ -3,7 +3,10 @@
 # Don't change
 require($_SERVER['DOCUMENT_ROOT']."/controler/template_engine.php");
 
-# Can be change
-$smarty->assign("title", "Regular Events");
-$smarty->assign("page_name", "Regular Events");
-$smarty->display("events.tpl");
+requireLogin();
+
+
+$title = "Regular Events";
+$page_name = "Regular Events";
+
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/events.php';

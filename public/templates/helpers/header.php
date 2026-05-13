@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="/public/styles/header/header.css">
 	<link rel="stylesheet" href="/public/styles/generics/generics.css">
 	<link rel="stylesheet" href="/public/styles/popup/popup.css">
-	<title>{$title}</title>
+	<title><?= $title ?></title>
 </head>
 
 <body>
@@ -25,11 +25,11 @@
 	<header id="header">
 		<nav class="first-header">
 			<img id="navicon" src="/assets/images/navicon.webp" alt="navicon" loading="lazy" onclick="show_navbar()">
-			<a id="page-name">{$page_name}</a>
+			<a id="page-name"><?= $title ?></a>
 
 			<div id="account">
 				<a id="username">
-					{$smarty.session.username}
+					<?= htmlspecialchars($_SESSION['username'] ?? '') ?>
 				</a>
 				<a href="/controler/login/logout.php">
 					<img id="exit_icon" src="/assets/images/exit.png" alt="exit" width="50" height="50" loading="lazy">

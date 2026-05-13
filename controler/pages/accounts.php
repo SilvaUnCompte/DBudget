@@ -2,9 +2,11 @@
 
 # Don't change
 require($_SERVER['DOCUMENT_ROOT']."/controler/template_engine.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . '/controler/helpers/auth.php';
 
-# Can be change
-$smarty->assign("title", "Accounts");
-$smarty->assign("page_name", "Accounts");
-$smarty->assign("head_color", "blue");
-$smarty->display("accounts.tpl");
+requireLogin();
+
+
+$title = "Accounts";
+$page_name = "Accounts";
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/accounts.php';
