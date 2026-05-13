@@ -4,9 +4,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/database/tables/user.php');
 
 if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 $title = "Login";
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/header.php';
 
 if (isset($_GET['input_email']) && isset($_GET['input_password'])) {
-
+    
     $email = $_GET['input_email'];
     $password = $_GET['input_password'];
 
