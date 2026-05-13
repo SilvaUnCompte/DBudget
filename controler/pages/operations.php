@@ -3,7 +3,10 @@
 # Don't change
 require($_SERVER['DOCUMENT_ROOT']."/controler/template_engine.php");
 
-# Can be change
-$smarty->assign("title", "Operations");
-$smarty->assign("page_name", "Operations");
-$smarty->display("operations.tpl");
+requireLogin();
+
+
+$title = "Operations";
+$page_name = "Operations";
+
+require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/operations.php';

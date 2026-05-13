@@ -1,4 +1,3 @@
-{include file='helpers/header.tpl'}
 
 <link rel="stylesheet" href="/public/styles/pages/operations/operations.css">
 <link rel="stylesheet" href="/public/styles/table/table.css">
@@ -14,7 +13,7 @@
                 <div class="col col-5">Actions</div>
             </li>
             <div id="datasheet">
-                {for $i = 0; $i < 14; $i++}
+                <?php for ($i = 0; $i < 14; $i++): ?>
                     <li class="table-row">
                         <div class="col col-1" data-label="Date"> --- </div>
                         <div class="col col-2" data-label="Label"> --- </div>
@@ -22,7 +21,7 @@
                         <div class="col col-4" data-label="Category"> --- </div>
                         <div class="col col-5" data-label="Actions"></div>
                     </li>
-                {/for}
+                <?php endfor; ?>
             </div>
         </ul>
         <input type="date" name="date-to-search" id="date-to-search" onchange="update_datasheet()">
@@ -80,4 +79,3 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/public/js/operations.js" type="text/javascript"></script>
 
-{include file="helpers/footer.tpl"}

@@ -1,4 +1,3 @@
-{include file='helpers/header.tpl'}
 
 <link rel="stylesheet" href="/public/styles/pages/analytics/analytics.css">
 
@@ -54,4 +53,3 @@
 
 <script src="/public/js/analytics.js" type="text/javascript"></script>
 
-{include file="helpers/footer.tpl"}
