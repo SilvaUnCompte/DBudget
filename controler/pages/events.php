@@ -8,6 +8,6 @@ requireLogin();
 $title = "Regular Events";
 $page_name = "Regular Events";
 
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/header.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/events.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/footer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/events.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/footer.php';
