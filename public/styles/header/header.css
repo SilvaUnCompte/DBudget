@@ -76,6 +76,16 @@ header #navicon {
   padding: 0;
   padding-top: 90px;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  li:last-child {
+    margin-bottom: 110px;
+    margin-top: auto;
+    height: auto;
+  }
+  li:last-child a span {
+    font-size: 3em;
+  }
 }
 #side-menu .corner {
   background-color: #212147;
