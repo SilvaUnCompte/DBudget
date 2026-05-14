@@ -12,6 +12,7 @@
 	<script src="/public/js/utils.js" type="text/javascript"></script>
 	<script src="/public/js/navbar.js" type="text/javascript"></script>
 	<script src="/public/js/popup.js" type="text/javascript"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="/public/styles/header/header.css">
 	<link rel="stylesheet" href="/public/styles/generics/generics.css">
 	<link rel="stylesheet" href="/public/styles/popup/popup.css">
@@ -48,6 +49,7 @@
 		<li><a href="/controler/pages/operations.php">Operations</a></li>
 		<li><a href="/controler/pages/verification.php">Verification</a></li>
 		<li><a href="/controler/pages/events.php">Events</a></li>
+		<li><a id="settings-menu" href="/controler/pages/settings.php"><span class="material-icons">settings</span></a></li>
 </ul>
 
 <img id="loading-gif" src="/assets/images/load.gif" alt="loading">
