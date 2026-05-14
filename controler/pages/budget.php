@@ -9,6 +9,6 @@ requireLogin();
 $title = "Budget";
 $page_name = "Budget";
 
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/header.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/budget.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/footer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/budget.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/footer.php';

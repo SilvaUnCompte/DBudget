@@ -8,6 +8,6 @@ requireLogin();
 $title = "Accounts";
 $page_name = "Accounts";
 
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/header.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/accounts.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/footer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/accounts.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/footer.php';

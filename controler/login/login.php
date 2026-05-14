@@ -4,7 +4,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/database/tables/user.php');
 
 if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 $title = "Login";
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/index.php';
 
 if (isset($_GET['input_email']) && isset($_GET['input_password'])) {
     
@@ -20,9 +21,9 @@ if (isset($_GET['input_email']) && isset($_GET['input_password'])) {
         header("Location: /controler/pages/index.php");
     } else {
         $error = 1;
-        require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/login.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/public/view/login.php';
     }
 } else {
     $error = 0;
-    require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/login.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/public/view/login.php';
 }

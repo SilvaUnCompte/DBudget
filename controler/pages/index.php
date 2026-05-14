@@ -10,6 +10,6 @@ $title = "Home";
 $page_name = "Overview";
 
 // Show Template
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/header.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/index.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/public/templates/helpers/footer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/index.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/footer.php';
