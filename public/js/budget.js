@@ -129,7 +129,7 @@ onload = () => {
 
 function set_operation_type_list() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_operation_type_list.php", false);
+    xhr.open("GET", "/api/get/operation-types", false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operation_type_list = JSON.parse(xhr.responseText);
@@ -150,7 +150,7 @@ function set_operation_type_list() {
 
 function fill_account_lists() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_accounts_by_user.php?email=" + email, true);
+    xhr.open("GET", "/api/get/accounts", true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             accounts = xhr.responseText;
@@ -186,7 +186,7 @@ function update_global_operation() {
 
     if (account_list.value > 0) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", `/database/api/get_operations_by_account.php?id_account=${account_list.value}&start=${start}&end=${end}]`, true);
+        xhr.open("GET", `/api/get/operations-account?id_account=${account_list.value}&start=${start}&end=${end}`, true);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 global_operations = JSON.parse(xhr.responseText);

@@ -68,7 +68,7 @@ function add_notes() {
 
 function set_operation_type_list() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_operation_type_list.php", false);
+    xhr.open("GET", "/api/get/operation-types", false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operation_type_list = JSON.parse(xhr.responseText);
@@ -103,7 +103,7 @@ function delete_element(element_id) {
     if (confirm("Are you sure you want to delete this operation ?")) {
         document.getElementById("loading-gif").style.display = "flex";
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/controler/deleting_elements/operation.php?id=" + element_id, true);
+        xhr.open("GET", "/api/delete/operation?id=" + element_id, true);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 new_popup("Operation deleted", "success");
@@ -145,7 +145,7 @@ function update_datasheet() {
     datasheet_clear();
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_operations_by_accounts.php?accounts=" + JSON.stringify(temp_account) + "&limit=14&date=" + date, false);
+    xhr.open("GET", "/api/get/operations?accounts=" + JSON.stringify(temp_account) + "&limit=14&date=" + date, false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operations = JSON.parse(xhr.responseText);
@@ -183,7 +183,7 @@ function update_datasheet() {
 
 function fill_account_list() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_accounts_by_user.php?email=" + email, true);
+    xhr.open("GET", "/api/get/accounts", true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             accounts = JSON.parse(xhr.responseText);
@@ -221,7 +221,7 @@ function creating_operation_pannel() {
 }
 
 function create_operation() {
-    
+
     label = document.getElementById("label").value;
     if (label.length > 50) {
         label = label.substring(0, 47) + "...";
@@ -235,7 +235,7 @@ function create_operation() {
     else {
         document.getElementById("loading-gif").style.display = "flex";
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/controler/creating_elements/operation.php?id_account=" + account_list.value +
+        xhr.open("GET", "/api/create/operation?id_account=" + account_list.value +
             "&label=" + encodeURIComponent(label) +
             "&amount=" + amount +
             "&category=" + category +
@@ -258,7 +258,7 @@ function create_operation() {
 
 function show_balance(id_account) {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", `/database/api/get_amount_at_date.php?id_account=${id_account}&date=${date_to_search.value}]`, false);
+    xhr.open("GET", `/api/get/amount?id_account=${id_account}&date=${date_to_search.value}`, false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             balance.value = JSON.parse(xhr.responseText) + " €";

@@ -4,7 +4,7 @@
 <section id="section-core">
     <div class="form-box">
         <div class="form-value">
-            <form action="/controler/login/login.php" method="get">
+            <form action="/app/login" method="get">
                 <h2>Login</h2>
                 <div class="input-box">
                     <ion-icon name="mail-outline"></ion-icon>

@@ -50,7 +50,7 @@ function update_brief() {
 
 function fill_account_lists() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_accounts_by_user.php?email=" + email, true);
+    xhr.open("GET", "/api/get/accounts", true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             accounts = JSON.parse(xhr.responseText);
@@ -74,7 +74,7 @@ function fill_account_lists() {
 
 function set_operation_type_list() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_operation_type_list.php?type=0", false);
+    xhr.open("GET", "/api/get/operation-types?type=0", false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operation_type_list = JSON.parse(xhr.responseText);
@@ -119,7 +119,7 @@ function update_datasheet() {
         datasheet.innerHTML = "";
 
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", `/database/api/get_operations_by_account.php?id_account=${account_list.value}&start=${start_str}&end=${end_str}]`, false);
+        xhr.open("GET", `/api/get/operations-account?id_account=${account_list.value}&start=${start_str}&end=${end_str}`, false);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 operations = JSON.parse(xhr.responseText);
@@ -200,7 +200,7 @@ function confirm_delete() {
     if (confirm("Are you sure you want to delete these operations?") == true) {
         selected.forEach(element => {
             let xhr = new XMLHttpRequest();
-            xhr.open("GET", `/controler/deleting_elements/operation.php?id=${element.getAttribute("id_operation")}`, true);
+            xhr.open("GET", `/api/delete/operation?id=${element.getAttribute("id_operation")}`, true);
             xhr.onload = () => {
                 if (xhr.status == 200) {
                     element.remove();
@@ -222,5 +222,5 @@ function open_new_operation_tab() {
     note = note.replace(/(?:\r\n|\r|\n)/g, '\\n');
     console.log(note);
 
-    window.open(`/controler/pages/operations.php?note=${note}`);
+    window.open(`/operations?note=${note}`);
 }

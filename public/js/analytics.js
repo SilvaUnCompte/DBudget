@@ -25,7 +25,7 @@ window.addEventListener('resize', () => {
 
 function set_operation_type_list() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_operation_type_list.php", false);
+    xhr.open("GET", "/api/get/operation-types", false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operation_type_list = JSON.parse(xhr.responseText);
@@ -139,7 +139,7 @@ onload = () => {
 
 function fill_account_list() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_accounts_by_user.php?email=" + email, true);
+    xhr.open("GET", "/api/get/accounts", true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             accounts = xhr.responseText;
@@ -193,7 +193,7 @@ function selected_account_change() {
 
 function get_operations() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", `/database/api/get_operations_by_account.php?id_account=${selected_account.id_account}&start=${analytics_start.value}&end=${analytics_end.value}]`, true);
+    xhr.open("GET", `/api/get/operations-account?id_account=${selected_account.id_account}&start=${analytics_start.value}&end=${analytics_end.value}`, true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operations = JSON.parse(xhr.responseText);
@@ -204,7 +204,7 @@ function get_operations() {
 
             // Security if there is no operation at the start of the chart
             let xhr2 = new XMLHttpRequest();
-            xhr2.open("GET", `/database/api/get_amount_at_date.php?id_account=${account_list.value}&date=${analytics_start.value}]`, false);
+            xhr2.open("GET", `/api/get/amount?id_account=${account_list.value}&date=${analytics_start.value}`, false);
             xhr2.onload = () => {
                 if (xhr2.status == 200) {
                     operations.unshift({ ["date"]: analytics_start.value, ["new_sold"]: parseInt(xhr2.responseText) });
@@ -362,7 +362,7 @@ function exportCSV() {
 
     CSVoperations.forEach(operation => {
         csv += `${operation.date},${operation.amount},${operation.label},${operation.category}\n`;
-    });   
+    });
 
     let hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);

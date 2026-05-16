@@ -15,7 +15,7 @@ onload = () => {
     datasheet.innerHTML = "";
     date.valueAsDate = new Date();
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_accounts_by_user.php?email=" + email, false);
+    xhr.open("GET", "/api/get/accounts", false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             let accounts = JSON.parse(xhr.responseText);
@@ -104,7 +104,7 @@ function process_transfer() {
         label_val = label.value == "" ? get_account_shortname() : label.value;
 
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", `/controler/creating_elements/transaction.php?from=${transfer_data[0]}&to=${transfer_data[1]}&label=${encodeURIComponent(label_val)}&date=${date.value}&amount=${amount.value}`, false);
+        xhr.open("GET", `/api/create/transaction?from=${transfer_data[0]}&to=${transfer_data[1]}&label=${encodeURIComponent(label_val)}&date=${date.value}&amount=${amount.value}`, false);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 new_popup("Transaction process", "success");
@@ -174,7 +174,7 @@ function create_account() {
             }
 
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", `/controler/creating_elements/account.php?label=${encodeURIComponent(acc_label.value)}&type=${acc_type.value}&sold=${acc_sold.value}`, true);
+            xhr.open("GET", `/api/create/account?label=${encodeURIComponent(acc_label.value)}&type=${acc_type.value}&sold=${acc_sold.value}`, true);
             xhr.onload = () => {
                 if (xhr.status == 200) {
                     new_popup("Account created", "success");
@@ -228,7 +228,7 @@ function confirm_edit_element(label, sold, type, id) {
     }
     else {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", `/controler/updating_elements/account.php?id=${id}&label=${encodeURIComponent(label)}&sold=${sold}&type=${type}`, true);
+        xhr.open("GET", `/api/update/account?id=${id}&label=${encodeURIComponent(label)}&sold=${sold}&type=${type}`, true);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 new_popup("Account updated", "success");
@@ -246,7 +246,7 @@ function delete_element(id) {
     if (confirm("Are you sure you want to delete this account?")) {
         if (confirm("Are you REALLY sure? It will delete all transactions linked to this account. I mean, are you REALLY REALLY sure? I can't do anything if you regret it after.")) {
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", `/controler/deleting_elements/account.php?id=${id}`, true);
+            xhr.open("GET", `/api/delete/account?id=${id}`, true);
             xhr.onload = () => {
                 if (xhr.status == 200) {
                     new_popup("Account deleted", "success");
