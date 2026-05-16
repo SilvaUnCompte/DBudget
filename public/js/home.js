@@ -111,7 +111,7 @@ let budget_chart = new Chart(
 
 onload = () => {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_accounts_by_user.php?email=" + email, true);
+    xhr.open("GET", "/api/get/accounts", true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             accounts = xhr.responseText;
@@ -137,7 +137,7 @@ onload = () => {
 
 function set_operation_type_list() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_operation_type_list.php", false);
+    xhr.open("GET", "/api/get/operation-types", false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operation_type_list = JSON.parse(xhr.responseText);
@@ -158,7 +158,7 @@ function set_operation_type_list() {
 
 function fill_dataset() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_operations_by_accounts.php?accounts=" + accounts + "&limit=" + 14, true);
+    xhr.open("GET", "/api/get/operations?accounts=" + accounts + "&limit=" + 14, true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operations = JSON.parse(xhr.responseText);
@@ -200,14 +200,14 @@ function set_log_charts() {
     let end_str = formatDateToString(end);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", `/database/api/get_operations_by_account.php?id_account=${highest_account.id_account}&start=${start_str}&end=${end_str}]`, true);
+    xhr.open("GET", `/api/get/operations-account?id_account=${highest_account.id_account}&start=${start_str}&end=${end_str}`, true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operations = JSON.parse(xhr.responseText);
 
             // Security if there is no operation at the start of the chart
             let xhr2 = new XMLHttpRequest();
-            xhr2.open("GET", `/database/api/get_amount_at_date.php?id_account=${highest_account.id_account}&date=${start_str}]`, false);
+            xhr2.open("GET", `/api/get/amount?id_account=${highest_account.id_account}&date=${start_str}`, false);
             xhr2.onload = () => {
                 if (xhr2.status == 200) {
                     operations.unshift({ ["date"]: start_str, ["new_sold"]: parseInt(xhr2.responseText) });
@@ -271,7 +271,7 @@ function set_pie_chart() {
     end = formatDateToString(end);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", `/database/api/get_operations_by_account.php?id_account=${random_checking_account.id_account}&start=${start}&end=${end}]`, true);
+    xhr.open("GET", `/api/get/operations-account?id_account=${random_checking_account.id_account}&start=${start}&end=${end}`, true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operations = JSON.parse(xhr.responseText);

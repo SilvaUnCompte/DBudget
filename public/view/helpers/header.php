@@ -32,7 +32,7 @@
 				<a id="username">
 					<?= htmlspecialchars($_SESSION['username'] ?? '') ?>
 				</a>
-				<a href="/controler/login/logout.php">
+				<a href="/app/logout">
 					<img id="exit_icon" src="/assets/images/exit.png" alt="exit" width="50" height="50" loading="lazy">
 				</a>
 			</div>
@@ -42,14 +42,14 @@
 	<div class="corner-back"></div>
 	<ul id="side-menu">
 		<div class="corner"></div>
-		<li><a href="/controler/pages/index.php">Overview</a></li>
-		<li><a href="/controler/pages/accounts.php">Accounts</a></li>
-		<li><a href="/controler/pages/budget.php">Budget</a></li>
-		<li><a href="/controler/pages/analytics.php">Analytics</a></li>
-		<li><a href="/controler/pages/operations.php">Operations</a></li>
-		<li><a href="/controler/pages/verification.php">Verification</a></li>
-		<li><a href="/controler/pages/events.php">Events</a></li>
-		<li><a id="settings-menu" href="/controler/pages/settings.php"><span class="material-icons">settings</span></a></li>
+		<li><a href="/app/home">Overview</a></li>
+		<li><a href="/app/accounts">Accounts</a></li>
+		<li><a href="/app/budget">Budget</a></li>
+		<li><a href="/app/analytics">Analytics</a></li>
+		<li><a href="/app/operations">Operations</a></li>
+		<li><a href="/app/verification">Verification</a></li>
+		<li><a href="/app/events">Events</a></li>
+		<li><a id="settings-menu" href="/app/settings"><span class="material-icons">settings</span></a></li>
 </ul>
 
 <img id="loading-gif" src="/assets/images/load.gif" alt="loading">

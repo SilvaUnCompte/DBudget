@@ -27,7 +27,7 @@ onload = () => {
 
 function set_operation_type_list() {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_operation_type_list.php", false);
+    xhr.open("GET", "/api/get/operation-types", false);
     xhr.onload = () => {
         if (xhr.status == 200) {
             operation_type_list = JSON.parse(xhr.responseText);
@@ -65,7 +65,7 @@ function delete_element(event_id) {
     console.log(event_id);
     if (confirm("Are you sure you want to delete this operation ?")) {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/controler/deleting_elements/event.php?id=" + event_id, true);
+        xhr.open("GET", "/api/delete/event?id=" + event_id, true);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 update_datasheet();
@@ -84,7 +84,7 @@ function update_datasheet() {
     datasheet.innerHTML = "";
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_events_by_accounts.php?accounts=" + accounts + "&date=" + date, true);
+    xhr.open("GET", "/api/get/events?accounts=" + accounts + "&date=" + date, true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             events = JSON.parse(xhr.responseText);
@@ -149,7 +149,7 @@ function update_datasheet() {
 
 function fill_account_list() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/database/api/get_accounts_by_user.php?email=" + email, true);
+    xhr.open("GET", "/api/get/accounts", true);
     xhr.onload = () => {
         if (xhr.status == 200) {
             accounts = xhr.responseText;
@@ -192,7 +192,7 @@ function create_event() {
     }
     else {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/controler/creating_elements/event.php?id_account=" + account_list.value +
+        xhr.open("GET", "/api/create/event?id_account=" + account_list.value +
             "&label=" + encodeURIComponent(label) +
             "&amount=" + amount +
             "&category=" + category +
@@ -301,7 +301,7 @@ function confirm_edit_element(label, amount, start, end, frequency, category, id
     else {
         element.parentNode.innerHTML = `<img src="/assets/images/load.gif" alt="load" class="card-button">`;
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", `/controler/updating_elements/event.php?label=${encodeURIComponent(label)}&amount=${amount}&start=${start}&end=${end}&frequency=${frequency}&category=${category}&id=${id}`, true);
+        xhr.open("GET", `/api/update/event?label=${encodeURIComponent(label)}&amount=${amount}&start=${start}&end=${end}&frequency=${frequency}&category=${category}&id=${id}`, true);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 new_popup("Event updated", "success");
