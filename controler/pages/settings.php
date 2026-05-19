@@ -7,6 +7,9 @@ requireLogin();
 $title = "Settings";
 $page_name = "Settings";
 
+$username = $_SESSION['username'] ?? '';
+
+
 require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/header.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/public/view/settings.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/public/view/helpers/footer.php';

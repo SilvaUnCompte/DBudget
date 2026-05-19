@@ -5,13 +5,8 @@
         <h2>Paramètres</h2>
 
         <div class="settings-group">
-            <label for="opt-nom">Nom</label>
-            <input type="text" id="opt-nom" placeholder="Votre nom">
-        </div>
-
-        <div class="settings-group">
-            <label for="opt-prenom">Prénom</label>
-            <input type="text" id="opt-prenom" placeholder="Votre prénom">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="input-username" value="<?= htmlspecialchars($username) ?>" placeholder="Entrez votre nom d'utilisateur">
         </div>
 
         <div class="settings-group">
@@ -24,7 +19,7 @@
             <input type="checkbox" id="opt-theme">
         </div>
 
-        <button class="valide_button" onclick="">Sauvegarder</button>
+        <button class="valide_button" onclick="saveSettings()">Sauvegarder</button>
     </div>
 </section>
 
