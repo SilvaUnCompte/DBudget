@@ -33,6 +33,7 @@ $routes = [
     // API - UPDATE
     '/api/update/account' => 'controler/updating_elements/account.php',
     '/api/update/event'   => 'controler/updating_elements/event.php',
+    '/api/update/settings' => 'controler/updating_elements/settings.php',
 
     // API - DELETE
     '/api/delete/account'   => 'controler/deleting_elements/account.php',
