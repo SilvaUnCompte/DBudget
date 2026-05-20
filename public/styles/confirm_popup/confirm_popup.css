@@ -1,0 +1,74 @@
+@keyframes overlay-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes overlay-out {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes popup-in {
+    from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes popup-out {
+    from { opacity: 1; transform: translateY(0)    scale(1);    }
+    to   { opacity: 0; transform: translateY(-20px) scale(0.95); }
+}
+
+#confirm-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: overlay-in 0.2s ease forwards;
+}
+
+#confirm-popup-overlay.closing {
+    animation: overlay-out 0.2s ease forwards;
+}
+
+#confirm-popup-overlay #confirm-popup {
+    background-color: #e7e7e7;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    animation: popup-in 0.2s ease forwards;
+    margin: 0 20px;
+}
+
+#confirm-popup-overlay.closing #confirm-popup {
+    animation: popup-out 0.2s ease forwards;
+}
+
+#confirm-popup-overlay #confirm-popup #confirm-popup-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+#confirm-popup-overlay #confirm-popup #confirm-popup-message {
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 25px 0;
+}
+
+#confirm-popup-overlay #confirm-popup #confirm-popup-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#confirm-popup-overlay #confirm-popup #confirm-popup-buttons button {
+   cursor: pointer;
+   margin: 0;
+   border: 1px solid #0000006c;
+}
