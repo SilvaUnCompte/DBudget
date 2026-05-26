@@ -190,31 +190,37 @@ function delete_list(self) {
     }
 }
 
+function confirm_popup_delete() {
+    confirm_popup(
+        "Supprimer une liste d'opération",
+        "Êtes-vous sûr de vouloir supprimer la liste d'opération ? Cette action est irréversible.",
+        () => { confirm_delete(); },
+        () => {}
+    );
+}
+
 function confirm_delete() {
     let selected = Array.from(datasheet.getElementsByClassName("to-delete"));
     if (selected.length == 0) {
         new_popup("No operation selected", "warn");
         return;
     }
-
-    if (confirm("Are you sure you want to delete these operations?") == true) {
-        selected.forEach(element => {
-            let xhr = new XMLHttpRequest();
-            xhr.open("GET", `/api/delete/operation?id=${element.getAttribute("id_operation")}`, true);
-            xhr.onload = () => {
-                if (xhr.status == 200) {
-                    element.remove();
-                    operations = operations.filter(operation => operation.id_operation != element.getAttribute("id_operation"));
-                    update_brief();
-                    new_popup("Operation deleted", "success");
-                }
-                else {
-                    new_popup("Error deleting operation", "error");
-                }
+    selected.forEach(element => {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", `/api/delete/operation?id=${element.getAttribute("id_operation")}`, true);
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                element.remove();
+                operations = operations.filter(operation => operation.id_operation != element.getAttribute("id_operation"));
+                update_brief();
+                new_popup("Operation deleted", "success");
             }
-            xhr.send();
-        });
-    }
+            else {
+                new_popup("Error deleting operation", "error");
+            }
+        }
+        xhr.send();
+    });
 }
 
 function open_new_operation_tab() {

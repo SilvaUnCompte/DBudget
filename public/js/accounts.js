@@ -41,7 +41,7 @@ onload = () => {
 
                         <div class="col col-4" data-label="Actions">
                             <img src="/assets/images/edit.png" alt="edit" class="card-button" onclick="edit_element(${account.id_account},this)">
-                            <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="delete_element(${account.id_account})">
+                            <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element(${account.id_account})">
                         </div>
                     </tr>`;
             });
@@ -242,23 +242,35 @@ function confirm_edit_element(label, sold, type, id) {
     }
 }
 
+function confirm_popup_delete_element(id) {
+    confirm_popup(
+        "Suppression d'un compte",
+        "Êtes-vous sûr de vouloir supprimer ce compte ? Cette action est irréversible.",
+        () => { 
+            confirm_popup(
+                "Suppression d'un compte",
+                "Êtes vous VRAIMENT sur ? Tout les transactions liées à ce compte seront supprimées. Je veux dire, êtes vous VRAIMENT VRAIMENT sur ? Je ne pourrais rien faire si vous le regrettez après.",
+                () => { delete_element(id); },
+                () => {}
+            );
+        },
+        () => {}
+    );
+}
+
 function delete_element(id) {
-    if (confirm("Are you sure you want to delete this account?")) {
-        if (confirm("Are you REALLY sure? It will delete all transactions linked to this account. I mean, are you REALLY REALLY sure? I can't do anything if you regret it after.")) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", `/api/delete/account?id=${id}`, true);
-            xhr.onload = () => {
-                if (xhr.status == 200) {
-                    new_popup("Account deleted", "success");
-                    onload();
-                }
-                else {
-                    new_popup("Error deleting account", "error")
-                }
-            }
-            xhr.send();
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", `/api/delete/account?id=${id}`, true);
+    xhr.onload = () => {
+        if (xhr.status == 200) {
+            new_popup("Account deleted", "success");
+            onload();
+        }
+        else {
+            new_popup("Error deleting account", "error")
         }
     }
+    xhr.send();
 
     setTimeout(() => {
         undo_transfer();
