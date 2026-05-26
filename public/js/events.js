@@ -61,22 +61,28 @@ function set_select_category() {
     });
 }
 
+function confirm_popup_delete_element(event_id) {
+    confirm_popup(
+        "Supprimer un évennement",
+        "Êtes-vous sûr de vouloir supprimer cet évennement ? Cette action est irréversible.",
+        () => { delete_element(event_id); },
+        () => {}
+    );
+}
+
 function delete_element(event_id) {
-    console.log(event_id);
-    if (confirm("Are you sure you want to delete this operation ?")) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/api/delete/event?id=" + event_id, true);
-        xhr.onload = () => {
-            if (xhr.status == 200) {
-                update_datasheet();
-                new_popup("Event deleted", "success");
+    var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/api/delete/event?id=" + event_id, true);
+            xhr.onload = () => {
+                if (xhr.status == 200) {
+                    update_datasheet();
+                    new_popup("Event deleted", "success");
+                }
+                else {
+                    new_popup("Error deleting operation", "error");
+                }
             }
-            else {
-                new_popup("Error deleting operation", "error");
-            }
-        }
         xhr.send();
-    }
 }
 
 function update_datasheet() {
@@ -136,7 +142,7 @@ function update_datasheet() {
                     }
 
                     datasheet.children[i].children[7].innerHTML = `<img src="/assets/images/edit.png" alt="edit" class="card-button" onclick="edit_element(${events[i].id_regular_event},this)">
-                    <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="delete_element('${events[i].id_regular_event}')">`;
+                    <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element('${events[i].id_regular_event}')">`;
                 }
             }
         }

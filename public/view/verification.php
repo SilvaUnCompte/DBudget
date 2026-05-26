@@ -43,7 +43,7 @@
         <div class="row-field">
             <a id="add-operation" class="valide_button noselect" onclick="open_new_operation_tab()">Add missing
                 operation</a>
-            <a id="confirm-delete" class="valide_button noselect" onclick="confirm_delete()">Confirm delete</a>
+            <a id="confirm-delete" class="valide_button noselect" onclick="confirm_popup_delete()">Confirm delete</a>
         </div>
     </section>
 
