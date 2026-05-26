@@ -11,13 +11,9 @@
 
 	<script src="/public/js/utils.js" type="text/javascript"></script>
 	<script src="/public/js/navbar.js" type="text/javascript"></script>
-	<script src="/public/js/popup.js" type="text/javascript"></script>
-	<script src="/public/js/confirm_popup.js" type="text/javascript"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="/public/styles/header/header.css">
 	<link rel="stylesheet" href="/public/styles/generics/generics.css">
-	<link rel="stylesheet" href="/public/styles/popup/popup.css">
-	<link rel="stylesheet" href="/public/styles/confirm_popup/confirm_popup.css">
 	<title><?= $title ?></title>
 </head>
 
