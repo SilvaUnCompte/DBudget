@@ -47,6 +47,5 @@ if ($uri === '/') {
 } elseif (isset($routes[$uri])) {
     require $_SERVER['DOCUMENT_ROOT'] . $routes[$uri];
 } else {
-    http_response_code(404);
-    echo "404 - Page non trouvée";
+    require 'controler/pages/error_404.php';
 }
