@@ -1,0 +1,39 @@
+#section-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+
+.error-box {
+  text-align: center;
+  padding: 60px 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+  margin: 20px;
+}
+
+.error-box a {
+  text-align: center;
+  margin: 15px auto 0px;
+}
+
+.error-code {
+  font-size: 6rem;
+  margin: 0;
+  color: #424549;
+  letter-spacing: 8px;
+}
+
+.error-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #424549;
+  margin: 10px 0;
+}
+
+.error-description {
+  color: #888;
+  margin-bottom: 30px;
+}
