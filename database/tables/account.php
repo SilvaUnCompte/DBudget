@@ -8,6 +8,7 @@ class Account
     private $label;
     private $type; // 0 = checking account, 1 = savings account
     private $user_email;
+    private $icon; // Base64 encoded image string
 
     public function __construct($id_account)
     {
@@ -26,6 +27,7 @@ class Account
         $this->label = $result['label'];
         $this->type = $result['type'];
         $this->user_email = $result['user_email'];
+        $this->icon = $result['icon'];
     }
     public function __destruct()
     {
@@ -36,13 +38,14 @@ class Account
     {
         global $db;
 
-        $query = $db->prepare('UPDATE bank_account SET label = :label, type = :type, user_email = :user_email WHERE id_account = :id_account');
+        $query = $db->prepare('UPDATE bank_account SET label = :label, type = :type, user_email = :user_email, icon = :icon WHERE id_account = :id_account');
 
         $query->execute([
             'id_account' => $this->id_account,
             'label' => $this->label,
             'type' => $this->type,
-            'user_email' => $this->user_email
+            'user_email' => $this->user_email,
+            'icon' => $this->icon
         ]);
     }
 
@@ -62,6 +65,10 @@ class Account
     {
         return $this->user_email;
     }
+    public function getProfilePicture()
+    {
+        return $this->icon;
+    }
 
     public function setLabel($label)
     {
@@ -74,6 +81,10 @@ class Account
     public function setUserEmail($user_email)
     {
         $this->user_email = $user_email;
+    }
+    public function setProfilePicture($icon)
+    {
+        $this->icon = $icon;
     }
 
     public static function createAccount($label, $type, $user_email)
