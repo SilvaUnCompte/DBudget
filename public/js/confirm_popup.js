@@ -11,7 +11,7 @@ function confirm_popup(title, message, onConfirm, onCancel = null) {
 
     overlay.innerHTML = `
         <div id="confirm-popup">
-            <p id="confirm-popup-title">${title}</p>
+            <p id="confirm-popup-title">${escapeHTML(title)}</p>
             <p id="confirm-popup-message">${message}</p>
             <div id="confirm-popup-buttons">
                 <button id="confirm-popup-cancel" class="valide_button noselect">Annuler</button>

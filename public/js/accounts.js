@@ -41,7 +41,7 @@ onload = () => {
 
                         <div class="col col-4" data-label="Actions">
                             <img src="/assets/images/edit.png" alt="edit" class="card-button" onclick="edit_element(${account.id_account},this)">
-                            <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element(${account.id_account})">
+                            <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element(${account.id_account}, '${account.label}')">
                         </div>
                     </tr>`;
             });
@@ -242,14 +242,14 @@ function confirm_edit_element(label, sold, type, id) {
     }
 }
 
-function confirm_popup_delete_element(id) {
+function confirm_popup_delete_element(id, label) {
     confirm_popup(
         "Suppression d'un compte",
-        "Êtes-vous sûr de vouloir supprimer ce compte ? Cette action est irréversible.",
+        `Êtes-vous sûr de vouloir supprimer le compte <strong>${label}</strong> ? Cette action est irréversible.`,
         () => { 
             confirm_popup(
                 "Suppression d'un compte",
-                "Êtes vous VRAIMENT sur ? Tout les transactions liées à ce compte seront supprimées. Je veux dire, êtes vous VRAIMENT VRAIMENT sur ? Je ne pourrais rien faire si vous le regrettez après.",
+                `Êtes vous VRAIMENT sur ? Tout les transactions liées à <strong>${label}</strong> seront supprimées. Je veux dire, êtes vous VRAIMENT VRAIMENT sur ? Je ne pourrais rien faire si vous le regrettez après.`,
                 () => { delete_element(id); },
                 () => {}
             );

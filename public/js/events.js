@@ -62,9 +62,10 @@ function set_select_category() {
 }
 
 function confirm_popup_delete_element(event_id) {
+    const event = events.find(e => e.id_regular_event == event_id);
     confirm_popup(
-        "Supprimer un évennement",
-        "Êtes-vous sûr de vouloir supprimer cet évennement ? Cette action est irréversible.",
+        "Supprimer un évènement",
+        `Êtes-vous sûr de vouloir supprimer l'évènement ${bold(event.label)} ? Cette action est irréversible.`,
         () => { delete_element(event_id); },
         () => {}
     );
@@ -142,7 +143,7 @@ function update_datasheet() {
                     }
 
                     datasheet.children[i].children[7].innerHTML = `<img src="/assets/images/edit.png" alt="edit" class="card-button" onclick="edit_element(${events[i].id_regular_event},this)">
-                    <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element('${events[i].id_regular_event}')">`;
+                    <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element(${events[i].id_regular_event})">`;
                 }
             }
         }
