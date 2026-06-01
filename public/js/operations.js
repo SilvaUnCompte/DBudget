@@ -100,9 +100,10 @@ function set_select_category() {
 // Datasheet
 
 function confirm_popup_delete_element(element_id) {
+    const op = operations.find(o => o.id_operation == element_id);
     confirm_popup(
         "Supprimer une opération",
-        "Êtes-vous sûr de vouloir supprimer cette opération ? Cette action est irréversible.",
+        `Êtes-vous sûr de vouloir supprimer l'opération ${bold(op.label)} ? Cette action est irréversible.`,
         () => { delete_element(element_id); },
         () => {}
     );
@@ -176,7 +177,7 @@ function update_datasheet() {
                 datasheet.children[nb_operations - i - 1].children[3].innerHTML = operation_type_list[operations[i].category].title;
 
                 if (operations[i].regularity == 0) {
-                    datasheet.children[nb_operations - i - 1].children[4].innerHTML = '<img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element(' + operations[i].id_operation + ')">';
+                    datasheet.children[nb_operations - i - 1].children[4].innerHTML = `<img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element(${operations[i].id_operation})">`;
                 }
             }
         }
