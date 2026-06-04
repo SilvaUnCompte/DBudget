@@ -41,8 +41,8 @@ onload = () => {
                         <div class="col col-3" data-label="Type">${account.type ? "Savings account" : "Checking account"}</div>
 
                         <div class="col col-4" data-label="Actions">
-                            <img src="/assets/images/edit.png" alt="edit" class="card-button" onclick="edit_element(${account.id_account},this)">
-                            <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element(${account.id_account}, '${account.label}')">
+                            <img src="/assets/images/edit.png" alt="edit" class="card-button" onclick="edit_element(event, ${account.id_account}, this)">
+                            <img src="/assets/images/trash.png" alt="delete" class="card-button" onclick="confirm_popup_delete_element(event, ${account.id_account}, '${account.label}')">
                         </div>
                     </tr>`;
             });
@@ -202,7 +202,8 @@ function cancel_create_account() {
     create_account_button.style.display = "";
 }
 
-function edit_element(id, element) {
+function edit_element(event, id, element) {
+    event.stopPropagation();
     card = element.parentNode.parentNode;
     card.classList.add("editing-row");
 
@@ -245,7 +246,8 @@ function confirm_edit_element(label, sold, type, id) {
     }
 }
 
-function confirm_popup_delete_element(id, label) {
+function confirm_popup_delete_element(event, id, label) {
+    event.stopPropagation();
     confirm_popup(
         "Suppression d'un compte",
         `Êtes-vous sûr de vouloir supprimer le compte <strong>${label}</strong> ? Cette action est irréversible.`,
