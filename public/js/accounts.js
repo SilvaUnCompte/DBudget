@@ -225,8 +225,6 @@ function edit_element(id, element) {
 }
 
 function confirm_edit_element(label, sold, type, id) {
-    console.log(label, type, id);
-
     if (label == "" || type == "" || sold == "") {
         new_popup("Please fill all fields", "warn");
     }

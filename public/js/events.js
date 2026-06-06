@@ -72,7 +72,6 @@ function confirm_popup_delete_element(event_id) {
 }
 
 function delete_element(event_id) {
-    console.log(event_id);
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", `/api/v1/events`, true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -300,7 +299,6 @@ function confirm_edit_element(label, amount, start, end, frequency, category, id
     }
 
     if (label == "" || amount == "" || start == "" || end == "" || frequency == "" || category == "") {
-        console.log(label, amount, start, end, frequency, category);
         new_popup("Please fill all the fields", "warn");
     }
     else {
