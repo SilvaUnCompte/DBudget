@@ -227,7 +227,6 @@ function confirm_delete() {
 function open_new_operation_tab() {
     let note = document.getElementById("notes").value;
     note = note.replace(/(?:\r\n|\r|\n)/g, '\\n');
-    console.log(note);
 
     window.open(`/app/operations?note=${note}`);
 }
