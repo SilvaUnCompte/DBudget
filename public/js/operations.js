@@ -166,6 +166,7 @@ function update_datasheet() {
     }
     else {
         balance.value = "";
+        document.getElementById("balance-footer").classList.remove("visible");
     }
 
     datasheet_clear();
