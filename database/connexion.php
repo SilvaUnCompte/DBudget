@@ -23,7 +23,7 @@ global $db;
 
 // Use env variables to connect to the database
 try {
-    $cnx = 'mysql:host='.$DB_HOST.';port='.$DB_PORT.';dbname='.$DB_NAME.'';
+    $cnx = 'mysql:host='.$DB_HOST.';port='.$DB_PORT.';dbname='.$DB_NAME.';charset=utf8mb4';
     $options = array(
         PDO::MYSQL_ATTR_SSL_CA => $_SERVER['DOCUMENT_ROOT'] . "../../../../etc/ssl/certs/ca-certificates.crt", // TODO: Change this path
     );
