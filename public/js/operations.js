@@ -84,6 +84,8 @@ function set_select_category() {
     // Get the selected account type by using let accounts
     select_category.innerHTML = "";
 
+    if (!selected_account) return;
+
     operation_type_list.forEach(operation_type => {
         if (operation_type.account_type == selected_account.type) {
             select_category.innerHTML += `<option value="${operation_type.id}">${operation_type.title}</option>`;
