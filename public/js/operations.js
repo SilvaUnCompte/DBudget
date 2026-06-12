@@ -84,6 +84,10 @@ function set_select_category() {
     // Get the selected account type by using let accounts
     select_category.innerHTML = "";
 
+    if (!selected_account) {
+        return;
+    }
+
     operation_type_list.forEach(operation_type => {
         if (operation_type.account_type == selected_account.type) {
             select_category.innerHTML += `<option value="${operation_type.id}">${operation_type.title}</option>`;
@@ -139,7 +143,6 @@ function datasheet_clear() {
 
 function update_datasheet() {
     document.getElementById("loading-gif").style.display = "flex";
-    add_field.style.display = "flex";
     let date = date_to_search.value;
     let temp_account = accounts.map(account => account.id_account);
 
@@ -220,12 +223,14 @@ function creating_operation_pannel() {
     set_select_category();
 
     if (account_list.value > 0) {
+        add_field.style.visibility = "visible";
         add_field.style.transform = "translate(0, 0)";
         add_field.style.opacity = "1";
     }
     else {
-        add_field.style.transform = "";
-        add_field.style.opacity = "";
+        add_field.style.transform = "translate(50px, 0)";
+        add_field.style.opacity = "0";
+        add_field.style.visibility = "hidden";
     }
 }
 
