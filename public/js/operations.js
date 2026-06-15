@@ -12,6 +12,7 @@ const filter_type = document.getElementById("filter-type");
 let accounts = [];
 let selected_account;
 let operation_type_list = [];
+let prev_nb_operations;
 
 onload = () => {
     date_to_search.valueAsDate = new Date();
@@ -138,16 +139,16 @@ function delete_element(element_id) {
 }
 
 function datasheet_clear() {
-    for (let i = 0; i < 14; i++) {
-        datasheet.children[i].style.display = "";
-        datasheet.children[i].children[0].innerHTML = "---";
-        datasheet.children[i].children[1].innerHTML = "---";
-        datasheet.children[i].children[2].innerHTML = "---";
-        datasheet.children[i].children[3].innerHTML = "---";
-        datasheet.children[i].children[4].innerHTML = "";
-        datasheet.children[i].style.color = "black";
-        
-        for (let c = 0; c < 5; c++) datasheet.children[i].children[c].style.cssText = "";
+    for (const element of datasheet.children[0].children) element.style.cssText = "";
+
+    for (const card of datasheet.children) {
+        card.style.display = "";
+        card.children[0].innerHTML = "---";
+        card.children[1].innerHTML = "---";
+        card.children[2].innerHTML = "---";
+        card.children[3].innerHTML = "---";
+        card.children[4].innerHTML = "";
+        card.style.color = "black";
     }
 }
 
@@ -179,20 +180,21 @@ function update_datasheet() {
     xhr.open("GET", url, false);
     xhr.onload = () => {
         if (Math.floor(xhr.status / 100) === 2) {
-            operations = JSON.parse(xhr.responseText).data;
-            nb_operations = operations.length;
+            let operations = JSON.parse(xhr.responseText).data;
+            let nb_operations = operations.length;
 
             if (nb_operations == 0) {
-                new_popup("There is no operation at this date", "info");
+                if (prev_nb_operations != 0) new_popup("There is no operation at this date", "info");
 
                 let first = datasheet.children[0];
+                
+                for (const element of first.children) element.style.display = "none";
                 first.children[0].innerHTML = "Aucune opération";
-
                 first.children[0].style.cssText = "flex:1; text-align:center; font-style:italic; color:#888;";
-                for (let c = 1; c < 5; c++) first.children[c].style.display = "none";
+
                 document.getElementById("loading-gif").style.display = "none";
-                return;
             }
+            prev_nb_operations = nb_operations;
 
             for (let i = 0; i < nb_operations; i++) {
                 if (operations[i].amount > 0) {
