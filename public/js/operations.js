@@ -10,6 +10,7 @@ const select_category = document.getElementById("category");
 const search_label = document.getElementById("search-label");
 const filter_type = document.getElementById("filter-type");
 let accounts = [];
+let operations = [];
 let selected_account;
 let operation_type_list = [];
 let prev_nb_operations;
@@ -193,7 +194,7 @@ function update_datasheet() {
     xhr.open("GET", url, false);
     xhr.onload = () => {
         if (Math.floor(xhr.status / 100) === 2) {
-            let operations = JSON.parse(xhr.responseText).data;
+            operations = JSON.parse(xhr.responseText).data;
             let nb_operations = operations.length;
 
             if (nb_operations == 0) {
