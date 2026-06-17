@@ -131,10 +131,12 @@
     flex-direction: column;
   }
   .back-table-row {
-    height: 5px !important;
+    height: 40px !important;
+    box-sizing: border-box;
   }
-  .responsive-table li {
-    height: auto;
+  .responsive-table .table-row {
+    height: 40px;
+    box-sizing: border-box;
     padding-top: 8px;
     padding-bottom: 8px;
   }
