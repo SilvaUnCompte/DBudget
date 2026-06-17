@@ -25,6 +25,19 @@ onload = () => {
         document.getElementById("filter-dropdown").classList.toggle("open");
     });
 
+    // Close filters dropdown when clicking outside (mobile only)
+    document.addEventListener("click", (event) => {
+        if (window.innerWidth >= 768) return;
+
+        const dropdown = document.getElementById("filter-dropdown");
+        const toggle = document.getElementById("filter-toggle");
+
+        if (!dropdown.classList.contains("open")) return;
+        if (dropdown.contains(event.target) || toggle.contains(event.target)) return;
+
+        dropdown.classList.remove("open");
+    });
+
     search_label.addEventListener("input", update_datasheet);
     filter_type.addEventListener("change", update_datasheet);
     balance_view.addEventListener("change", update_datasheet);
