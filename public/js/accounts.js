@@ -103,21 +103,27 @@ function manage_account_transfer(id) {
 function transfer_animation_on(id, postion, animate = true) {
     let card = document.getElementById("card-" + id);
 
-    if (!animate) {
-        card.style.transition = "none";
-    }
+    let slot = document.getElementById(`selected-account-${postion}`);
 
     // Reset + set final width before measuring so the offset is correct
+    card.style.transition = "none";
     card.style.transform = "";
-    card.style.width = "90%";
+    card.style.width = "";
     card.offsetWidth; // force reflow
 
-    let slot_position = document.getElementById(`selected-account-${postion}`).getBoundingClientRect();
-    let card_position = card.getBoundingClientRect();
+    let start_width = card.getBoundingClientRect().width;
+    let slot_position = slot.getBoundingClientRect();
+    let target_width = slot_position.width;
 
+    card.style.width = start_width + "px";
+    card.offsetWidth;
+
+    let card_position = card.getBoundingClientRect();
     let x = slot_position.x - card_position.x;
     let y = slot_position.y - card_position.y;
 
+    card.style.transition = animate ? "" : "none";
+    card.style.width = target_width + "px";
     card.style.transform = `translate(${x}px, ${y}px)`;
 
     if (!animate) {
@@ -139,8 +145,15 @@ function reposition_transfer_cards() {
 // Reset card to its original position
 function transfer_animation_off(id) {
     let card = document.getElementById("card-" + id);
+
+    let full_width = card.parentElement.getBoundingClientRect().width;
     card.style.transform = "";
-    card.style.width = "";
+    card.style.width = full_width + "px";
+
+    card.addEventListener("transitionend", function clear_width() {
+        card.style.width = "";
+        card.removeEventListener("transitionend", clear_width);
+    });
 }
 
 function process_transfer() {
