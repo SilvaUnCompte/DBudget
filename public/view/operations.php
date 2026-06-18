@@ -6,25 +6,22 @@
 
         <section id="search-filters">
             <div id="search-filters-left">
-                <input type="text" name="search-label" id="search-label" placeholder="Rechercher un label...">
+                <input type="text" name="search-label" id="search-label" placeholder="<?= trans('operations.filters.search_label') ?>">
                 <button type="button" id="filter-toggle"><img src="/assets/images/filter.png" alt="filter"></button>
             </div>
             <div id="filter-dropdown">
                 <select name="balance-view" id="balance-view">
-                    <option value="0">Tous les comptes</option>
+                    <option value="0"><?= trans('operations.filters.all_accounts') ?></option>
                     <?php foreach ($accounts as $account): ?>
                         <option value="<?= (int) $account['id_account'] ?>"><?= htmlspecialchars($account['label']) ?></option>
                     <?php endforeach; ?>
                 </select>
                 <select name="filter-type" id="filter-type">
-                    <option value="">Tous les types</option>
-                    <?php foreach ($operation_types as $type): ?>
-                        <option value="<?= (int) $type['id'] ?>"><?= htmlspecialchars($type['title']) ?></option>
-                    <?php endforeach; ?>
+                    <option value=""><?= trans('operations.filters.all_types') ?></option>
                 </select>
                 <input type="date" name="date-to-search" id="date-to-search">
             </div>
-            <input type="text" name="balance" id="balance" placeholder="Balance" disabled style="display:none;">
+            <input type="text" name="balance" id="balance" placeholder="<?= trans('operations.filters.balance') ?>" disabled style="display:none;">
         </section>
 
         <ul class="responsive-table">
@@ -60,7 +57,7 @@
             <div id="account_selection">
                 <p><?= trans('operations.select_account') ?></p>
                 <select name="selected-account" id="selected-account">
-                    <option value="0"><?= trans('operations.select_account') ?></option>
+                    <option value="0"><?= trans('operations.account_list') ?></option>
                     <?php foreach ($accounts as $account): ?>
                         <option value="<?= (int) $account['id_account'] ?>"><?= htmlspecialchars($account['label']) ?></option>
                     <?php endforeach; ?>

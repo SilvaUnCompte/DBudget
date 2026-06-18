@@ -49,7 +49,6 @@ onload = () => {
 }
 
 function sync_account_selection() {
-
     document.getElementById("loading-gif").style.display = "flex";
     balance_view.value = account_list.value;
     selected_account = accounts.find(account => account.id_account == account_list.value)
@@ -96,6 +95,8 @@ function load_preloaded_data() {
     operation_type_list = window.OPERATION_TYPES || [];
     accounts = window.ACCOUNTS || [];
 
+    setup_filter_type();
+
     if (accounts.length == 0) {
         new_popup("There is no account yet", "info");
         document.getElementById("add-field").disabled = true;
@@ -103,6 +104,15 @@ function load_preloaded_data() {
     }
 
     update_datasheet();
+}
+
+function setup_filter_type() {
+    const default_option = filter_type.querySelector('option[value=""]').outerHTML;
+    filter_type.innerHTML = default_option;
+
+    operation_type_list.forEach(operation_type => {
+        filter_type.innerHTML += `<option value="${operation_type.id}">${translate_category(operation_type.title)}</option>`;
+    });
 }
 
 function set_select_category() {
