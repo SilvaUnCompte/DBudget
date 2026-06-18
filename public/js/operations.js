@@ -49,6 +49,7 @@ onload = () => {
 }
 
 function sync_account_selection() {
+
     document.getElementById("loading-gif").style.display = "flex";
     balance_view.value = account_list.value;
     selected_account = accounts.find(account => account.id_account == account_list.value)
@@ -265,14 +266,14 @@ function creating_operation_pannel() {
     set_select_category();
 
     if (account_list.value > 0) {
-        add_field.style.visibility = "visible";
-        add_field.style.transform = "translate(0, 0)";
-        add_field.style.opacity = "1";
+        add_field.style.display = "flex";
+        requestAnimationFrame(() => {
+            add_field.classList.add("is-visible");
+        });
     }
     else {
-        add_field.style.transform = "translate(50px, 0)";
-        add_field.style.opacity = "0";
-        add_field.style.visibility = "hidden";
+        add_field.classList.remove("is-visible");
+        add_field.style.display = "none";
     }
 }
 
