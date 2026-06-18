@@ -52,7 +52,14 @@
     "operations": {
         "title": "Operations",
         "nav": "Operations",
-        "select_account": "Select an account",
+        "filters": {
+            "search_label": "Search a label...",
+            "all_accounts": "All accounts",
+            "all_types": "All types",
+            "balance": "Balance"
+        },
+        "select_account": "Select an account on wich to add operation",
+        "account_list": "Select an account",
         "add_operation": "Add an operation",
         "amount": "Amount",
         "date": "Date",
