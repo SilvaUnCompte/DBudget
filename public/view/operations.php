@@ -101,8 +101,6 @@
 <br>
 
 <script>
-    // Données pré-chargées par le serveur (voir controler/pages/operations.php).
-    // Évite deux requêtes API au chargement de la page.
     window.ACCOUNTS = <?= json_encode($accounts, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
     window.OPERATION_TYPES = <?= json_encode($operation_types, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 </script>
