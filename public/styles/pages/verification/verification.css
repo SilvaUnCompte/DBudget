@@ -60,4 +60,10 @@
 #month-brief #total-income {
   color: #308d05;
   font-weight: bold;
-}/*# sourceMappingURL=verification.css.map */
+}
+
+@media all and (max-width: 767px) {
+  #notes-pannel {
+    display: none;
+  }
+}
