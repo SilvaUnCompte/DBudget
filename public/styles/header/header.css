@@ -105,11 +105,9 @@ header #navicon {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 175px;
-  right: 0;
+  margin-top: auto;
   box-sizing: border-box;
+  width: 100%;
   padding: 5px 10px;
   background-color: #d4d4d4;
   z-index: 10;
@@ -121,8 +119,5 @@ footer {
   }
   #navicon {
     display: block !important;
-  }
-  footer {
-    left: 0;
   }
 }
