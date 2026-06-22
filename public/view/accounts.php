@@ -1,9 +1,11 @@
-<link rel="stylesheet" href="/public/styles/table/table.css">
-<link rel="stylesheet" href="/public/styles/pages/accounts/accounts.css">
+<link rel="stylesheet" href="/public/styles/components/table/responsive-table.css">
+    <link rel="stylesheet" href="/public/styles/components/table/table-accounts.css">
+    <link rel="stylesheet" href="/public/styles/components/transfer.css">
+    <link rel="stylesheet" href="/public/styles/components/account-form.css">
 
 <section class="dashboard">
     <section class="container">
-        <ul class="responsive-table">
+        <ul class="responsive-table responsive-table--4cols-accounts">
             <li class="table-header">
                 <div class="col col-1"><?= trans('table.label') ?></div>
                 <div class="col col-2"><?= trans('table.sold') ?></div>

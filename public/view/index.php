@@ -1,10 +1,11 @@
 
-<link rel="stylesheet" href="/public/styles/pages/home/home.css">
-<link rel="stylesheet" href="/public/styles/table/table.css">
+<link rel="stylesheet" href="/public/styles/components/table/responsive-table.css">
+<link rel="stylesheet" href="/public/styles/components/table/table-home.css">
+<link rel="stylesheet" href="/public/styles/components/overview-charts.css">
 
 <section class="dashboard">
     <section class="container">
-        <ul class="responsive-table">
+        <ul class="responsive-table responsive-table--4cols-home">
             <li class="table-header">
                 <div class="col col-1"><?= trans('table.date') ?></div>
                 <div class="col col-2"><?= trans('table.label') ?></div>
@@ -35,7 +36,7 @@
 
         <section>
             <!-- camembert budget du mois -->
-            <div style="width: 70%;"><canvas id="overview-monthly-budget"></canvas></div>
+            <div class="budget-chart-wrapper"><canvas id="overview-monthly-budget"></canvas></div>
         </section>
     </section>
 </section>

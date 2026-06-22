@@ -1,5 +1,8 @@
-<link rel="stylesheet" href="/public/styles/pages/operations/operations.css">
-<link rel="stylesheet" href="/public/styles/table/table.css">
+<link rel="stylesheet" href="/public/styles/components/table/responsive-table.css">
+    <link rel="stylesheet" href="/public/styles/components/table/table-operations.css">
+    <link rel="stylesheet" href="/public/styles/components/add-panel-operation.css">
+    <link rel="stylesheet" href="/public/styles/components/operation-filter.css">
+    <link rel="stylesheet" href="/public/styles/components/notes.css">
 
 <section class="dashboard">
     <section class="container">
@@ -24,7 +27,7 @@
             <input type="text" name="balance" id="balance" placeholder="<?= trans('operations.filters.balance') ?>" disabled style="display:none;">
         </section>
 
-        <ul class="responsive-table">
+        <ul class="responsive-table responsive-table--5cols">
             <li class="table-header">
                 <div class="col col-1"><?= trans('table.date') ?></div>
                 <div class="col col-2"><?= trans('table.label') ?></div>

@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="/public/styles/pages/analytics/analytics.css">
+<link rel="stylesheet" href="/public/styles/components/analytics-board.css">
 
 <section id="phone-warning">
     <h1><?= trans('analytics.phone_warning') ?></h1>

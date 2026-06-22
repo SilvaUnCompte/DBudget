@@ -1,6 +1,7 @@
 
-<link rel="stylesheet" href="/public/styles/pages/events/events.css">
-<link rel="stylesheet" href="/public/styles/table/table.css">
+<link rel="stylesheet" href="/public/styles/components/table/responsive-table.css">
+    <link rel="stylesheet" href="/public/styles/components/table/table-events.css">
+    <link rel="stylesheet" href="/public/styles/components/event-form.css">
 
 <section id="event-board">
 
@@ -55,7 +56,7 @@
     </fieldset>
 
     <section id="event-list">
-        <ul class="responsive-table">
+        <ul class="responsive-table responsive-table--8cols">
 
             <li class="table-header">
                 <div class="col col-1"><?= trans('table.label') ?></div>
