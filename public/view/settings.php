@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/public/styles/pages/settings/settings.css">
+<link rel="stylesheet" href="/public/styles/components/cards-account.css">
 
 <section id="settings-board">
     <div class="settings-card">

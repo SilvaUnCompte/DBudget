@@ -13,8 +13,8 @@
 	<script>window.APP_LANG = <?= get_lang_json() ?>;</script>
 	<script src="/public/js/utils.js" type="text/javascript"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="/public/styles/header/header.css">
 	<link rel="stylesheet" href="/public/styles/generics/generics.css">
+	<link rel="stylesheet" href="/public/styles/layout/header.css">
 	<title><?= $title ?></title>
 </head>
 

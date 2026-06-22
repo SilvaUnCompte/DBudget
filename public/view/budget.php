@@ -1,8 +1,8 @@
 
-<link rel="stylesheet" href="/public/styles/pages/analytics/analytics.css">
-<link rel="stylesheet" href="/public/styles/pages/budget/budget.css">
-<link rel="stylesheet" href="/public/styles/table/table.css">
-<link rel="stylesheet" href="/public/styles/pages/home/home.css">
+<link rel="stylesheet" href="/public/styles/components/table/responsive-table.css">
+<link rel="stylesheet" href="/public/styles/components/table/table-home.css">
+<link rel="stylesheet" href="/public/styles/components/analytics-board.css">
+    <link rel="stylesheet" href="/public/styles/components/budget.css">
 
 <section id="analytics-board">
     <fieldset id="analytics-form">
@@ -68,7 +68,7 @@
 
     <section class="dashboard">
         <section class="container">
-            <ul class="responsive-table">
+            <ul class="responsive-table responsive-table--4cols-home">
                 <li class="table-header">
                     <div class="col col-1"><?= trans('table.date') ?></div>
                     <div class="col col-2"><?= trans('table.label') ?></div>

@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="/public/styles/pages/login/login.css">
+<link rel="stylesheet" href="/public/styles/components/auth.css">
 
 <section id="section-core">
     <div class="form-box">
