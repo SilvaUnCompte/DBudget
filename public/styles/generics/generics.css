@@ -1,57 +1,58 @@
+/* ==========================================================================
+   generics.css — Project-wide base, loaded on EVERY page (via helpers/header.php).
+   Contains only what the whole application relies on:
+     - reset / body / typography
+     - global form elements (input, select, buttons) every page uses
+     - shared layout helpers (.dashboard / .container) and small utilities
+   Page-specific components live in their own files under components/.
+   ========================================================================== */
+
+/* --- Reset / root --------------------------------------------------------- */
 body {
   display: flex;
   flex-direction: column;
   position: relative;
   min-height: 100vh;
-  margin: 0 0 0 175px;
+  margin: 0 0 0 175px; /* offsets the fixed sidebar (layout/header.css) */
   padding: 0;
   font-family: "lato", sans-serif;
   background-color: #e7e7e7;
 }
 
-.container {
-  width: 42%;
-  margin: 2vw;
-  margin-bottom: 20px;
-}
-
-.card-button {
-  width: 25px;
-  cursor: pointer;
-}
-
-.dashboard {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  width: 100%;
-}
+/* ==========================================================================
+   Form elements — every screen has inputs, selects and buttons
+   ========================================================================== */
 
 input,
 select {
+  padding: 3px 5px;
   border: 1px solid #c4c4c4;
   border-radius: 5px;
   background-color: #fff;
-  padding: 3px 5px;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+
+  &:disabled {
+    background-color: rgb(221, 221, 221);
+  }
 }
 
-input[type=date] {
-  background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+input[type="date"] {
   width: 151px;
+  background: #fff
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+    97% 50% no-repeat;
+
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
 }
 
-select:disabled,
-input:disabled {
-  background-color: rgb(221, 221, 221);
-}
-
-input[type=date]::-webkit-inner-spin-button {
-  display: none;
-}
-
-input[type=date]::-webkit-calendar-picker-indicator {
-  opacity: 0;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
@@ -60,30 +61,76 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
+/* --- Validation button (base + variants) ---------------------------------- */
 .valide_button {
-  text-decoration: none;
-  color: black;
   margin: 15px 3vw 0px auto;
   padding: 5px 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+  color: black;
+  text-decoration: none;
   cursor: pointer;
-}
-.valide_button:hover {
-  background-color: #ececec;
+
+  &:hover {
+    background-color: #ececec;
+  }
 }
 
-#loading-gif {
-  position: absolute;
-  top: 50vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-  width: 10%;
+/* Variant used inside cards (settings): right-aligned, light gray, thin border */
+.valide_button--card {
+  align-self: flex-end;
+  margin: 10px 0 0 0;
+  border: 1px solid #0000006c;
+  background-color: #f5f5f5;
 }
+
+/* Variant with extra bottom spacing (verification) */
+.valide_button--spaced {
+  margin-bottom: 45px;
+}
+
+/* --- Icon buttons --------------------------------------------------------- */
+/* Clickable icon inside a card (settings) */
+.card-button {
+  width: 25px;
+  cursor: pointer;
+}
+
+/* Small icon button (budget) */
+.button {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+/* ==========================================================================
+   Layout helpers — shared content containers
+   ========================================================================== */
+
+/* A row of columns (two cards side by side): home, accounts, operations... */
+.dashboard {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* A content card / column */
+.container {
+  width: 42%;
+  margin: 2vw;
+  margin-bottom: 20px;
+}
+
+/* Inline layout (switches to column on mobile) */
+.flex-inline {
+  display: flex;
+  flex-direction: row;
+}
+
+/* ==========================================================================
+   Small global utilities
+   ========================================================================== */
 
 .noselect {
   -webkit-touch-callout: none;
@@ -99,29 +146,51 @@ input[type=number] {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+/* Loading indicator shown on every page */
+#loading-gif {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 10%;
+  transform: translate(-50%, -50%);
+}
+
+/* ==========================================================================
+   Global responsive
+   ========================================================================== */
 @media all and (max-width: 767px) {
   * {
     font-size: small;
   }
+
   div {
     font-size: 10px;
   }
-  .container {
-    width: 90%;
-  }
-  .dashboard {
-    align-items: center;
-    flex-direction: column;
-  }
+
   body {
     margin-left: 0;
   }
+
+  .dashboard {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .flex-inline {
+    flex-direction: column;
+  }
+
   .card-button {
     width: 15px;
   }
 }
+
 @media (pointer: coarse) {
   #loading-gif {
     width: 25%;
   }
-}/*# sourceMappingURL=generics.css.map */
+}

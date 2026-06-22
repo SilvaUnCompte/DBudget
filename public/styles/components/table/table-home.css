@@ -1,0 +1,13 @@
+/* ==========================================================================
+   table-home.css — 4-column overview table variant.
+   Builds on responsive-table.css. Used by: home (index) and budget.
+   Modifier: .responsive-table--4cols-home
+   Columns: Date / Label / Amount / Category.
+   ========================================================================== */
+
+.responsive-table--4cols-home {
+  .col-1 { flex-basis: 20%; }
+  .col-2 { flex-basis: 36%; }
+  .col-3 { flex-basis: 22%; }
+  .col-4 { flex-basis: 22%; }
+}

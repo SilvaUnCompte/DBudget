@@ -1,0 +1,80 @@
+/* ==========================================================================
+   confirm-popup.css — Modal confirmation dialog.
+   IDs targeted by confirm_popup.js → kept. Rewritten with native nesting.
+   ========================================================================== */
+
+#confirm-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: overlay-in 0.2s ease forwards;
+
+  #confirm-popup {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 20px;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    animation: popup-in 0.2s ease forwards;
+
+    #confirm-popup-title {
+      margin: 0 0 10px 0;
+      color: #333;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    #confirm-popup-message {
+      margin: 0 0 25px 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    #confirm-popup-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+
+      button {
+        margin: 0;
+        border: 1px solid #0000006c;
+        cursor: pointer;
+      }
+    }
+  }
+
+  /* Closing state (class added by the JS) */
+  &.closing {
+    animation: overlay-out 0.2s ease forwards;
+
+    #confirm-popup {
+      animation: popup-out 0.2s ease forwards;
+    }
+  }
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes popup-in {
+  from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes popup-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-20px) scale(0.95); }
+}
