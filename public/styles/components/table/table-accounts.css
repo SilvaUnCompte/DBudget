@@ -1,0 +1,102 @@
+/* ==========================================================================
+   table-accounts.css — Accounts table variant.
+   Builds on responsive-table.css. Used by: accounts.
+   Modifier: .responsive-table--4cols-accounts
+   Columns: Label / Sold / Type / Actions, with the account icon in column 1.
+   Icon variants (--checking / --savings / --image) are set by the JS.
+   ========================================================================== */
+
+.responsive-table--4cols-accounts {
+  /* No width transition here — rows only slide on transform. */
+  .table-row {
+    transition: transform 0.3s ease;
+  }
+
+  .col-1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-basis: 35%;
+  }
+  .col-2 { flex-basis: 25%; }
+  .col-3 { flex-basis: 20%; }
+  .col-4 {
+    display: flex;
+    justify-content: end;
+    flex-basis: 20%;
+    padding-right: 10px;
+  }
+
+  .account-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      width: 70%;
+      height: 70%;
+      background-color: #6b6b6b;
+      -webkit-mask: url("/assets/images/liste.png") no-repeat center / contain;
+      mask: url("/assets/images/liste.png") no-repeat center / contain;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .account-icon--checking {
+    background-color: #e6f1fb;
+
+    &::before { background-color: #1a73e8; }
+  }
+
+  .account-icon--savings {
+    background-color: #e6f4ea;
+
+    &::before { background-color: #34a853; }
+  }
+
+  .account-icon--image::before {
+    content: none;
+  }
+}
+
+#total-sold {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+@media all and (max-width: 767px) {
+  .responsive-table--4cols-accounts {
+    li {
+      height: auto;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .col-1 {
+      align-items: center;
+      padding-left: 6px;
+    }
+
+    .account-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+/* ==========================================================================
+   budget.css — Budget-specific fieldsets and totals (budget screen).
+   Works alongside analytics-board.css (shared charts/board) on this screen.
+   ========================================================================== */
+
+#checking-account-fieldset {
+  div * {
+    margin: 0 5px;
+  }
+}
+
+#additional-expenditure-fieldset {
+  margin-top: 10px;
+}
+
+.budget-account-div {
+  filter: saturate(15%);
+}
+
+/* On the budget screen, .row-field spans the full width (label / value).
+   Overrides the analytics-board .row-field layout for these fieldsets. */
+:is(#analytics-board, #checking-account-fieldset, #additional-expenditure-fieldset) {
+  .row-field {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+#selected-duration {
+  width: 15px !important;
+}
+
+#total-add-expenditure {
+  font-weight: bold;
+}
+
+.bottom-info {
+  padding-top: 10px;
+}
+
+/* Disabled field right-aligned inside a span */
+span {
+  input:disabled {
+    background-color: transparent;
+    text-align: right;
+  }
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+@media all and (max-width: 767px) {
+  #checking-account-fieldset .row-field {
+    flex-direction: column;
+  }
+
+  #additional-expenditure-fieldset {
+    margin-bottom: 20px;
+  }
+}

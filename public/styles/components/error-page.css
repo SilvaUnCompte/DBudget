@@ -1,0 +1,44 @@
+/* ==========================================================================
+   error-page.css — Error page (403 / 404...). Fully static:
+   strict BEM naming (no JS dependency).
+   ========================================================================== */
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+
+  .error__card {
+    margin: 20px;
+    padding: 60px 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+    text-align: center;
+
+    a {
+      margin: 15px auto 0px;
+      text-align: center;
+    }
+  }
+
+  .error__code {
+    margin: 0;
+    color: #424549;
+    font-size: 6rem;
+    letter-spacing: 8px;
+  }
+
+  .error__message {
+    margin: 10px 0;
+    color: #424549;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .error__description {
+    margin-bottom: 30px;
+    color: #888;
+  }
+}

@@ -1,0 +1,47 @@
+/* ==========================================================================
+   notes.css — Note panels (operations, verification screens).
+   #notes-pannel: inline notes area. #note-box: draggable floating note.
+   ========================================================================== */
+
+#notes-pannel {
+  display: flex;
+  justify-content: center;
+  transition: all 0.15s ease-out;
+
+  #notes {
+    width: 100%;
+    margin: 25px 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 5px #ccc;
+  }
+}
+
+#note-box {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  z-index: 1000;
+  width: 35%;
+  height: 25%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.7607843137);
+  box-shadow: 0 0 5px #ccc;
+  cursor: grab;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8980392157);
+    transform: scale(1.01);
+  }
+}
+
+/* --- Responsive — hide notes on mobile ------------------------------------ */
+@media all and (max-width: 767px) {
+  #notes-pannel,
+  #note-box {
+    display: none;
+  }
+}
