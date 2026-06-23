@@ -1,0 +1,34 @@
+name: PHP Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+  workflow_dispatch:
+    input:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      # - name: Download PHPStan
+      #   run: curl -sSL https://github.com/phpstan/phpstan/releases/latest/download/phpstan.phar -o phpstan.phar
+
+      - name: Download PHP_CodeSniffer
+        run: curl -sSL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar -o phpcs.phar
+
+      # - name: PHPStan
+      #   run: php phpstan.phar analyse . --no-progress --level=5 --memory-limit=1G
+
+      - name: PHP_CodeSniffer
+        run: php phpcs.phar --standard=PSR12 .
