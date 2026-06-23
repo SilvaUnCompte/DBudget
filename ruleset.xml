@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<ruleset name="DBudget">
+    <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman">
+        <severity>5</severity>
+    </rule>
+
+    <rule ref="Squiz.ControlStructures.ControlSignature">
+        <severity>5</severity>
+        <properties>
+            <property name="allowComments" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.ControlStructures.InlineControlStructure"><severity>0</severity></rule>
+    <rule ref="Generic.Files.EndFileNewline"><severity>5</severity></rule>
+    <rule ref="PSR12.Files.FileHeader"><severity>5</severity></rule>
+    <rule ref="Generic.WhiteSpace.ScopeIndent"><severity>5</severity></rule>
+    <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"><severity>5</severity></rule>
+    <rule ref="Generic.Formatting.DisallowMultipleStatements"><severity>5</severity></rule>
+
+</ruleset>
