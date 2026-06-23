@@ -26,6 +26,15 @@ function formatDateToString(date) {
 }
 
 /**
+ * Check whether the viewport is at or below a given width.
+ * @param {number} [maxWidth=767] breakpoint in px (defaults to the mobile width).
+ * @returns {boolean}
+ */
+function isMobile(maxWidth = 767) {
+    return window.matchMedia(`(max-width: ${maxWidth}px)`).matches;
+}
+
+/**
  * @param {string} str
  * @returns {string}
  */
