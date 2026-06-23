@@ -18,6 +18,7 @@ const fake_data = [
 window.addEventListener('resize', () => {
     budget_chart.resize();
     savings_chart.resize();
+    applyBudgetChartLayout();
 });
 
 let savings_chart = new Chart(
@@ -87,6 +88,7 @@ let budget_chart = new Chart(
     {
         type: 'pie',
         options: {
+            maintainAspectRatio: false,
             animation: {
                 animateRotate: true,
                 animateScale: true
@@ -108,6 +110,19 @@ let budget_chart = new Chart(
         data: {}
     }
 );
+
+
+function applyBudgetChartLayout() {
+    const mobileformat = isMobile(1600);
+
+    budget_chart.options.plugins.legend.position = mobileformat ? 'bottom' : 'right';
+
+    if (budget_chart.options.plugins.title) {
+        budget_chart.options.plugins.title.position = mobileformat ? 'top' : 'left';
+    }
+
+    budget_chart.update();
+}
 
 onload = () => {
     var xhr = new XMLHttpRequest();
@@ -314,7 +329,7 @@ function set_pie_chart() {
             };
 
             budget_chart.data = data;
-            budget_chart.update();
+            applyBudgetChartLayout();
         }
         else {
             new_popup("Error getting operations", "error");

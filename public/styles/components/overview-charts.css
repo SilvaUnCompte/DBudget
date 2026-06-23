@@ -1,0 +1,16 @@
+/* ==========================================================================
+   overview-charts.css — Home dashboard overview charts (Chart.js).
+   Used by: home (index). Sizes the monthly-budget pie chart wrapper so its
+   legend is never cut: full width + fixed (non-square) height leaves room for
+   the right-side legend on desktop; on mobile the height shrinks and the
+   legend is moved below the chart (legend position handled in home.js).
+   ========================================================================== */
+
+.budget-chart-wrapper {
+  width: 100%;
+  height: 340px;
+
+  @media all and (max-width: 767px) {
+    height: 300px;
+  }
+}

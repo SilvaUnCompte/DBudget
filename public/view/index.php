@@ -1,6 +1,6 @@
 
-<link rel="stylesheet" href="/public/styles/components/table/responsive-table.css">
 <link rel="stylesheet" href="/public/styles/components/table/table-home.css">
+<link rel="stylesheet" href="/public/styles/components/table/responsive-table.css">
 <link rel="stylesheet" href="/public/styles/components/overview-charts.css">
 
 <section class="dashboard">
@@ -46,4 +46,3 @@
 <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
 <script src="/public/js/home.js" type="text/javascript"></script>
-
