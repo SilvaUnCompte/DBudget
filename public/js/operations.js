@@ -20,7 +20,7 @@ onload = () => {
     operation_date.valueAsDate = new Date();
 
     account_list.addEventListener("change", sync_account_selection);
-    account_list.addEventListener("change", creating_operation_pannel);
+    account_list.addEventListener("change", toggle_operation_pannel);
 
     document.getElementById("filter-toggle").addEventListener("click", () => {
         document.getElementById("filter-dropdown").classList.toggle("open");
@@ -272,19 +272,18 @@ function fill_account_list() {
     xhr.send();
 }
 
-function creating_operation_pannel() {
-    set_select_category();
+function toggle_operation_pannel() {
 
     if (account_list.value > 0) {
         add_field.style.display = "flex";
+        set_select_category();
         requestAnimationFrame(() => {
             add_field.classList.add("is-visible");
         });
     }
-    else {
+    else if (account_list.value == 0) {
         add_field.classList.remove("is-visible");
-        add_field.style.display = "none";
-    }
+        };
 }
 
 function create_operation() {
