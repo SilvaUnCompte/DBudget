@@ -1,4 +1,5 @@
 <?php
+
 header('Content-Type: application/json');
 require($_SERVER['DOCUMENT_ROOT'] . '/database/connexion.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/database/tables/operation.php');
@@ -20,9 +21,14 @@ $from = new Account($from_id);
 $to = new Account($to_id);
 
 $order = null;
-if ($from->getType() == 0 && $to->getType() == 1) { $order = 0; }
-if ($from->getType() == 1 && $to->getType() == 1) { $order = 6; }
-else if ($to->getType() == 0) { $order = 7; }
+if ($from->getType() == 0 && $to->getType() == 1) {
+    $order = 0; 
+}
+if ($from->getType() == 1 && $to->getType() == 1) {
+    $order = 6; 
+} else if ($to->getType() == 0) {
+    $order = 7; 
+}
 
 Operation::createOperation($label, $date, -$amount, $order, 0, $from_id);
 Operation::createOperation($label, $date,  $amount, $order, 0, $to_id);

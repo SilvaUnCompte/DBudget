@@ -16,7 +16,7 @@ if (isset($_GET['input_email']) && isset($_GET['input_password'])) {
         header("Location: " . ($_SESSION['redirect'] ?? '/app/home'));
         exit();
     } else {
-        $error = 1;;
+        $error = 1;
     }
 } else {
     $error = 0;

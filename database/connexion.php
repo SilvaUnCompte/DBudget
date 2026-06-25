@@ -1,6 +1,5 @@
 <?php
 
-
 // Load environment variables from .env file
 $envPath = $_SERVER['DOCUMENT_ROOT'] . '/.env';
 
