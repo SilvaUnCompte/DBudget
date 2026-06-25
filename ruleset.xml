@@ -8,7 +8,7 @@
     <rule ref="Squiz.ControlStructures.ControlSignature">
         <severity>5</severity>
         <properties>
-            <property name="allowComments" value="true"/>
+            <property name="requiredSpacesBeforeColon" value="0"/>
         </properties>
     </rule>
 
@@ -18,5 +18,6 @@
     <rule ref="Generic.WhiteSpace.ScopeIndent"><severity>5</severity></rule>
     <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"><severity>5</severity></rule>
     <rule ref="Generic.Formatting.DisallowMultipleStatements"><severity>5</severity></rule>
+<rule ref="Internal.NoCodeFound"><severity>0</severity></rule>
 
 </ruleset>

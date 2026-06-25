@@ -73,7 +73,7 @@ function sanitize_date(mixed $value): string
 {
     if (!is_string($value)) return false;
     $d = DateTime::createFromFormat('Y-m-d', $value);
-    if (!$d || $d->format('Y-m-d') !== $value) sendAPIResponse(400, 'Invalid date format (expected Y-m-d) - [' . $value . ']', []);;
+    if (!$d || $d->format('Y-m-d') !== $value) sendAPIResponse(400, 'Invalid date format (expected Y-m-d) - [' . $value . ']', []);
     return $value;
 }
 

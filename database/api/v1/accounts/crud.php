@@ -1,4 +1,5 @@
 <?php
+
 header('Content-Type: application/json');
 require($_SERVER['DOCUMENT_ROOT'] . '/database/connexion.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/database/tables/account.php');

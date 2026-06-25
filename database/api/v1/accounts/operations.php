@@ -1,4 +1,5 @@
 <?php
+
 header('Content-Type: application/json');
 require($_SERVER['DOCUMENT_ROOT'] . '/database/connexion.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/database/api/v1/apiUtils.php');

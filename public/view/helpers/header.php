@@ -1,4 +1,6 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/controler/helpers/lang.php'; ?>
+<?php 
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/controler/helpers/lang.php'; ?>
 <!DOCTYPE html>
 <html lang="<?= get_locale() ?>">
 
