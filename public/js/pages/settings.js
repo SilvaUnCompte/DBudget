@@ -4,7 +4,7 @@ onload = () => {
     // Save + Reload = Popup info
     if (localStorage.getItem("settings_saved") === "1") {
         localStorage.removeItem("settings_saved");
-        new_popup(trans("settings.save_success"), "success");
+        new_toast(trans("settings.save_success"), "success");
     }
 }
 
@@ -13,7 +13,7 @@ function saveSettings() {
     const lang = document.getElementById("opt-langue").value;
 
     if (!username) {
-        new_popup(trans("settings.username_empty"), "warn");
+        new_toast(trans("settings.username_empty"), "warn");
         return;
     }
 
@@ -28,8 +28,8 @@ function saveSettings() {
             localStorage.setItem("settings_saved", "1");
             location.reload();
         } else {
-            new_popup(trans("settings.error_prefix") + data.message, "error");
+            new_toast(trans("settings.error_prefix") + data.message, "error");
         }
     })
-    .catch(() => new_popup(trans("settings.error_network"), "error"));
+    .catch(() => new_toast(trans("settings.error_network"), "error"));
 }

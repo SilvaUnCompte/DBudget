@@ -36,7 +36,7 @@ function set_operation_type_list() {
             }
         }
         else {
-            new_popup("Error getting operation type list", "error");
+            new_toast("Error getting operation type list", "error");
         }
     };
     xhr.send();
@@ -146,7 +146,7 @@ function fill_account_list() {
             accounts = JSON.stringify(accounts_list);
 
             if (accounts_list.length == 0) {
-                new_popup(trans('analytics.no_account'), "info");
+                new_toast(trans('analytics.no_account'), "info");
                 document.getElementById("analytics-form").disabled = true;
                 return;
             }
@@ -156,7 +156,7 @@ function fill_account_list() {
             });
         }
         else {
-            new_popup("Error getting accounts", "error");
+            new_toast("Error getting accounts", "error");
         }
     };
     xhr.send();
@@ -199,7 +199,7 @@ function get_operations() {
             operations = JSON.parse(xhr.responseText).data;
 
             if (operations.length == 0) {
-                new_popup(trans('analytics.no_operations'), "info");
+                new_toast(trans('analytics.no_operations'), "info");
             }
 
             // Security if there is no operation at the start of the chart
@@ -211,7 +211,7 @@ function get_operations() {
                     operations.push({ ["date"]: analytics_end.value, ["new_sold"]: operations[operations.length - 1].new_sold });
                 }
                 else {
-                    new_popup("Error getting balance", "error");
+                    new_toast("Error getting balance", "error");
                 }
             };
             xhr2.send();
@@ -219,7 +219,7 @@ function get_operations() {
             update_charts();
         }
         else {
-            new_popup("Error getting operations", "error");
+            new_toast("Error getting operations", "error");
         }
     };
     xhr.send();

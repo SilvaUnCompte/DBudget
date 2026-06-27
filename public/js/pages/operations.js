@@ -98,7 +98,7 @@ function load_preloaded_data() {
     setup_filter_type();
 
     if (accounts.length == 0) {
-        new_popup("There is no account yet", "info");
+        new_toast("There is no account yet", "info");
         document.getElementById("add-field").disabled = true;
         return;
     }
@@ -153,11 +153,11 @@ function delete_element(element_id) {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onload = () => {
         if (Math.floor(xhr.status / 100) === 2) {
-            new_popup(trans('operations.delete_success'), "success");
+            new_toast(trans('operations.delete_success'), "success");
             update_datasheet();
         }
         else {
-            new_popup(trans('operations.delete_error'), "error")
+            new_toast(trans('operations.delete_error'), "error")
         }
     }
     xhr.send(JSON.stringify({ id: element_id }));
@@ -209,7 +209,7 @@ function update_datasheet() {
             let nb_operations = operations.length;
 
             if (nb_operations == 0) {
-                if (prev_nb_operations != 0) new_popup(trans('operations.no_operations'), "info");
+                if (prev_nb_operations != 0) new_toast(trans('operations.no_operations'), "info");
 
                 let first = datasheet.children[0];
                 
@@ -239,7 +239,7 @@ function update_datasheet() {
             }
         }
         else {
-            new_popup("Error getting operations", "error")
+            new_toast("Error getting operations", "error")
         }
     }
     xhr.send();
@@ -253,7 +253,7 @@ function fill_account_list() {
         if (Math.floor(xhr.status / 100) === 2) {
             accounts = JSON.parse(xhr.responseText).data;
             if (accounts.length == 0) {
-                new_popup(trans('operations.no_account'), "info");
+                new_toast(trans('operations.no_account'), "info");
                 document.getElementById("add-field").disabled = true;
                 return;
             }
@@ -266,7 +266,7 @@ function fill_account_list() {
             update_datasheet();
         }
         else {
-            new_popup("Error getting accounts", "error")
+            new_toast("Error getting accounts", "error")
         }
     };
     xhr.send();
@@ -296,7 +296,7 @@ function create_operation() {
     category = document.getElementById("category").value;
 
     if (amount == "" || label == "" || operation_date.value == "") {
-        new_popup(trans('operations.fill_fields'), "warn")
+        new_toast(trans('operations.fill_fields'), "warn")
     }
     else {
         document.getElementById("loading-gif").style.display = "flex";
@@ -309,10 +309,10 @@ function create_operation() {
                 document.getElementById("label").value = "";
                 document.getElementById("amount").value = "";
                 selected_account.type == 0 ? document.getElementById("category").value = 1 : document.getElementById("category").value = 7;
-                new_popup(trans('operations.create_success'), "success");
+                new_toast(trans('operations.create_success'), "success");
             }
             else {
-                new_popup(trans('operations.create_error'), "error");
+                new_toast(trans('operations.create_error'), "error");
             }
         };
         xhr.send(JSON.stringify({ id_account: account_list.value, label, amount, category, date: operation_date.value }));
@@ -336,7 +336,7 @@ function show_balance(id_account) {
             footer.classList.add("visible");
         }
         else {
-            new_popup("Error getting balance", "error");
+            new_toast("Error getting balance", "error");
         }
     };
     xhr.send();

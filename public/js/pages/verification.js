@@ -56,7 +56,7 @@ function fill_account_lists() {
             accounts = JSON.parse(xhr.responseText).data;
 
             if (accounts.length == 0) {
-                new_popup(trans('verification.no_account'), "info");
+                new_toast(trans('verification.no_account'), "info");
                 document.getElementsByClassName("analytics-form")[0].disabled = true;
             }
             else {
@@ -66,7 +66,7 @@ function fill_account_lists() {
             }
         }
         else {
-            new_popup("Error getting accounts", "error");
+            new_toast("Error getting accounts", "error");
         }
     };
     xhr.send();
@@ -80,7 +80,7 @@ function set_operation_type_list() {
             operation_type_list = JSON.parse(xhr.responseText).data;
         }
         else {
-            new_popup("Error getting operation type list", "error");
+            new_toast("Error getting operation type list", "error");
         }
     };
     xhr.send();
@@ -103,7 +103,7 @@ function update_datasheet() {
         selected_month.disabled = true;
         additional_operation.disabled = true;
 
-        new_popup(trans('verification.select_account'), "warn");
+        new_toast(trans('verification.select_account'), "warn");
         return;
     }
     else {
@@ -126,7 +126,7 @@ function update_datasheet() {
                 nb_operations = operations.length;
 
                 if (nb_operations == 0) {
-                    new_popup(trans('verification.no_operations'), "info");
+                    new_toast(trans('verification.no_operations'), "info");
                     return;
                 }
 
@@ -165,7 +165,7 @@ function update_datasheet() {
                 }, this);
             }
             else {
-                new_popup("Error getting operations", "error")
+                new_toast("Error getting operations", "error")
             }
         }
         xhr.send();
@@ -205,7 +205,7 @@ function confirm_popup_delete() {
 function confirm_delete() {
     let selected = Array.from(datasheet.getElementsByClassName("to-delete"));
     if (selected.length == 0) {
-        new_popup(trans('verification.no_selection'), "warn");
+        new_toast(trans('verification.no_selection'), "warn");
         return;
     }
     selected.forEach(element => {
@@ -217,10 +217,10 @@ function confirm_delete() {
                 element.remove();
                 operations = operations.filter(operation => operation.id_operation != element.getAttribute("id_operation"));
                 update_brief();
-                new_popup(trans('verification.delete_success'), "success");
+                new_toast(trans('verification.delete_success'), "success");
             }
             else {
-                new_popup(trans('verification.delete_error'), "error");
+                new_toast(trans('verification.delete_error'), "error");
             }
         }
         xhr.send(JSON.stringify({ id: element.getAttribute("id_operation") }));

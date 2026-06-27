@@ -142,7 +142,7 @@ function set_operation_type_list() {
             }
         }
         else {
-            new_popup("Error getting operation type list", "error");
+            new_toast("Error getting operation type list", "error");
         }
     };
     xhr.send();
@@ -160,7 +160,7 @@ function fill_account_lists() {
             savings_accounts_list = accounts_list.filter(account => account.type == 1);
 
             if (checking_accounts_list.length == 0) {
-                new_popup(trans('budget.no_checking_account'), "info");
+                new_toast(trans('budget.no_checking_account'), "info");
                 document.getElementsByClassName("analytics-form")[0].disabled = true;
             }
             else {
@@ -171,7 +171,7 @@ function fill_account_lists() {
 
         }
         else {
-            new_popup("Error getting accounts", "error");
+            new_toast("Error getting accounts", "error");
         }
     };
     xhr.send();
@@ -191,7 +191,7 @@ function update_global_operation() {
             if (Math.floor(xhr.status / 100) === 2) {
                 global_operations = JSON.parse(xhr.responseText).data;
                 if (global_operations.length == 0) {
-                    new_popup(trans('budget.no_operations'), "info");
+                    new_toast(trans('budget.no_operations'), "info");
                     show_empty()
                 }
                 else {
@@ -199,7 +199,7 @@ function update_global_operation() {
                 }
             }
             else {
-                new_popup("Error getting operations", "error");
+                new_toast("Error getting operations", "error");
                 show_empty()
             }
         };

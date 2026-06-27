@@ -1,28 +1,28 @@
 
-function new_popup(text, popup_type) {
-    let popup = document.getElementsByClassName("popup")[0];    // Test if popup already exists
-    if (popup != undefined) { popup.remove(); }                 // If it does, remove it
+function new_toast(text, toast_type) {
+    let toast = document.getElementsByClassName("toast")[0];    // Test if toast already exists
+    if (toast != undefined) { toast.remove(); }                 // If it does, remove it
 
     document.body.insertAdjacentHTML("beforeEnd",`
-        <div class="popup ${popup_type}">
-            <p class=popup-title>${popup_type.toUpperCase()}</p>
+        <div class="toast ${toast_type}">
+            <p class="toast-title">${toast_type.toUpperCase()}</p>
             <span class="close">&times;</span>
             <p>${text}</p>
         </div>`);
 
-    popup = document.getElementsByClassName("popup")[0];        // Get the new popup
+    toast = document.getElementsByClassName("toast")[0];        // Get the new toast
     let close = document.getElementsByClassName("close")[0];    // Get the close button
 
     
-    close.onclick = () => delete_popup(popup);
+    close.onclick = () => delete_toast(toast);
     setTimeout(() => {
-        delete_popup(popup);
+        delete_toast(toast);
     }, 3500);
 }
 
-function delete_popup(popup) {
-    popup.style.animation = "popup-hide 0.6s ease forwards";
+function delete_toast(toast) {
+    toast.style.animation = "toast-hide 0.6s ease forwards";
     setTimeout(() => {
-        popup.remove();
+        toast.remove();
     }, 600);
 }

@@ -33,7 +33,7 @@ function set_operation_type_list() {
             operation_type_list = JSON.parse(xhr.responseText).data;
         }
         else {
-            new_popup("Error getting operation type list", "error");
+            new_toast("Error getting operation type list", "error");
         }
     };
     xhr.send();
@@ -77,10 +77,10 @@ function delete_element(event_id) {
     xhr.onload = () => {
         if (Math.floor(xhr.status / 100) === 2) {
             update_datasheet();
-            new_popup(trans('events.delete_success'), "success");
+            new_toast(trans('events.delete_success'), "success");
         }
         else {
-            new_popup(trans('events.delete_error'), "error");
+            new_toast(trans('events.delete_error'), "error");
         }
     }
     xhr.send(JSON.stringify({ id: event_id }));
@@ -109,7 +109,7 @@ function update_datasheet() {
                     <div class="col col-8" data-label="${trans('table.actions')}"> --- </div>
                 </li>`;
 
-                new_popup(trans('events.no_event'), "info");
+                new_toast(trans('events.no_event'), "info");
             }
             else {
                 // trier events par label
@@ -148,7 +148,7 @@ function update_datasheet() {
             }
         }
         else {
-            new_popup("Error getting events", "error");
+            new_toast("Error getting events", "error");
         }
     }
     xhr.send();
@@ -163,7 +163,7 @@ function fill_account_list() {
             accounts = response.data;
 
             if (accounts.length == 0) {
-                new_popup(trans('events.no_account'), "info");
+                new_toast(trans('events.no_account'), "info");
                 document.getElementById("event-form").disabled = true;
                 return;
             }
@@ -175,7 +175,7 @@ function fill_account_list() {
             update_datasheet();
         }
         else {
-            new_popup("Error getting accounts", "error");
+            new_toast("Error getting accounts", "error");
         }
     };
     xhr.send();
@@ -195,10 +195,10 @@ function create_event() {
     }
 
     if (label == "" || amount == "" || category == "" || start == "" || end == "" || frequency == "" || account == 0) {
-        new_popup(trans('events.fill_fields'), "warn");
+        new_toast(trans('events.fill_fields'), "warn");
     }
     else if (new Date(start) > new Date(end)) {
-        new_popup(trans('events.start_after_end'), "warn");
+        new_toast(trans('events.start_after_end'), "warn");
     }
     else {
         var xhr = new XMLHttpRequest();
@@ -215,10 +215,10 @@ function create_event() {
                 end_field.value = "";
                 frequency_field.value = 0;
 
-                new_popup(trans('events.create_success'), "success");
+                new_toast(trans('events.create_success'), "success");
             }
             else {
-                new_popup(trans('events.create_error'), "error");
+                new_toast(trans('events.create_error'), "error");
             }
         };
         xhr.send(JSON.stringify({ id_account: account_list.value, label, amount, category, start, end, frequency }));
@@ -300,10 +300,10 @@ function confirm_edit_element(label, amount, start, end, frequency, category, id
     }
 
     if (label == "" || amount == "" || start == "" || end == "" || frequency == "" || category == "") {
-        new_popup(trans('events.fill_fields'), "warn");
+        new_toast(trans('events.fill_fields'), "warn");
     }
     else if (new Date(start) > new Date(end)) {
-        new_popup(trans('events.start_after_end'), "warn");
+        new_toast(trans('events.start_after_end'), "warn");
     }
     else {
         element.parentNode.innerHTML = `<img src="/assets/images/load.gif" alt="load" class="card-button">`;
@@ -312,11 +312,11 @@ function confirm_edit_element(label, amount, start, end, frequency, category, id
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = () => {
             if (Math.floor(xhr.status / 100) === 2) {
-                new_popup(trans('events.update_success'), "success");
+                new_toast(trans('events.update_success'), "success");
                 fill_account_list();
             }
             else {
-                new_popup(trans('events.update_error'), "error")
+                new_toast(trans('events.update_error'), "error")
             }
         }
         xhr.send(JSON.stringify({ id, label, amount, start, end, frequency, category }));

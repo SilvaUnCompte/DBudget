@@ -132,7 +132,7 @@ onload = () => {
             accounts = JSON.parse(xhr.responseText).data;
 
             if (accounts.length == 0) {
-                new_popup(trans('home.no_account'), "info");
+                new_toast(trans('home.no_account'), "info");
                 return;
             }
 
@@ -141,7 +141,7 @@ onload = () => {
             set_pie_chart();
         }
         else {
-            new_popup("Error getting accounts", "error");
+            new_toast("Error getting accounts", "error");
         }
     };
     xhr.send();
@@ -165,7 +165,7 @@ function set_operation_type_list() {
             }
         }
         else {
-            new_popup("Error getting operation type list", "error");
+            new_toast("Error getting operation type list", "error");
         }
     };
     xhr.send();
@@ -194,7 +194,7 @@ function fill_dataset() {
             }
         }
         else {
-            new_popup("Error getting operations", "error");
+            new_toast("Error getting operations", "error");
         }
     }
     xhr.send();
@@ -228,7 +228,7 @@ function set_log_charts() {
                     operations.unshift({ ["date"]: start_str, ["new_sold"]: parseInt(JSON.parse(xhr2.responseText).data.balance) });
                 }
                 else {
-                    new_popup("Error getting operations", "error");
+                    new_toast("Error getting operations", "error");
                 }
             };
             xhr2.send();
@@ -260,7 +260,7 @@ function set_log_charts() {
             savings_chart.resize();
         }
         else {
-            new_popup("Error getting operations", "error");
+            new_toast("Error getting operations", "error");
         }
     };
     xhr.send();
@@ -275,7 +275,7 @@ function set_pie_chart() {
         }
     }
     if (checking_accounts.length == 0) {
-        new_popup(trans('budget.no_checking_account'), "info");
+        new_toast(trans('budget.no_checking_account'), "info");
         return;
     }
     const random_checking_account = checking_accounts[Math.floor(Math.random() * checking_accounts.length)];
@@ -332,7 +332,7 @@ function set_pie_chart() {
             applyBudgetChartLayout();
         }
         else {
-            new_popup("Error getting operations", "error");
+            new_toast("Error getting operations", "error");
         }
     };
     xhr.send();

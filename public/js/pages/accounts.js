@@ -48,7 +48,7 @@ onload = () => {
 
                         <div class="col col-4" data-label="${trans('table.actions')}"> </div>
                     </tr>`;
-                new_popup(trans('accounts.no_account'), "info");
+                new_toast(trans('accounts.no_account'), "info");
                 document.getElementById("loading-gif").style.display = "none";
                 return;
             }
@@ -70,7 +70,7 @@ onload = () => {
             total_sold.innerHTML = trans('accounts.total') + ": " + accounts.reduce((acc, account) => acc + account.sold, 0).toFixed(2) + " €";
         }
         else {
-            new_popup("Error getting accounts", "error")
+            new_toast("Error getting accounts", "error")
         }
         document.getElementById("loading-gif").style.display = "none";
     };
@@ -148,7 +148,7 @@ function transfer_animation_off(id) {
 
 function process_transfer() {
     if (transfer_data[0] == null || transfer_data[1] == null || date.value == "" || amount.value == "") {
-        new_popup(trans('accounts.fill_fields'), "warn");
+        new_toast(trans('accounts.fill_fields'), "warn");
     }
     else {
         label_val = label.value == "" ? get_account_shortname() : label.value;
@@ -159,11 +159,11 @@ function process_transfer() {
 
         xhr.onload = () => {
             if (Math.floor(xhr.status / 100) === 2) {
-                new_popup(trans('accounts.transfer_success'), "success");
+                new_toast(trans('accounts.transfer_success'), "success");
                 undo_transfer();
             }
             else {
-                new_popup(trans('accounts.transfer_error'), "error")
+                new_toast(trans('accounts.transfer_error'), "error")
             }
         }
         xhr.send(JSON.stringify({ from: transfer_data[0], to: transfer_data[1], label: label_val, date: date.value, amount: amount.value }));
@@ -218,7 +218,7 @@ function create_account() {
         const acc_sold = document.getElementById("create-account-sold");
 
         if (acc_label.value == "" || acc_type.value == "") {
-            new_popup(trans('accounts.fill_fields'), "warn");
+            new_toast(trans('accounts.fill_fields'), "warn");
         }
         else {
             if (acc_sold.value == "") {
@@ -230,7 +230,7 @@ function create_account() {
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onload = () => {
                 if (Math.floor(xhr.status / 100) === 2) {
-                    new_popup(trans('accounts.create_success'), "success");
+                    new_toast(trans('accounts.create_success'), "success");
                     acc_label.value = "";
                     acc_sold.value = "";
                     onload();
@@ -238,7 +238,7 @@ function create_account() {
                     create_account_button.style.display = "";
                 }
                 else {
-                    new_popup(trans('accounts.create_error'), "error")
+                    new_toast(trans('accounts.create_error'), "error")
                 }
             }
             xhr.send(JSON.stringify({ label: acc_label.value, type: acc_type.value, sold: acc_sold.value }));
@@ -276,7 +276,7 @@ function edit_element(event, id, element) {
 
 function confirm_edit_element(label, sold, type, id) {
     if (label == "" || type == "" || sold == "") {
-        new_popup(trans('accounts.fill_fields'), "warn");
+        new_toast(trans('accounts.fill_fields'), "warn");
     }
     else {
         var xhr = new XMLHttpRequest();
@@ -284,11 +284,11 @@ function confirm_edit_element(label, sold, type, id) {
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = () => {
             if (Math.floor(xhr.status / 100) === 2) {
-                new_popup(trans('accounts.update_success'), "success");
+                new_toast(trans('accounts.update_success'), "success");
                 onload();
             }
             else {
-                new_popup(trans('accounts.update_error'), "error")
+                new_toast(trans('accounts.update_error'), "error")
             }
         }
         xhr.send(JSON.stringify({ id, label, sold, type }));
@@ -318,11 +318,11 @@ function delete_element(id) {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onload = () => {
         if (Math.floor(xhr.status / 100) === 2) {
-            new_popup(trans('accounts.delete_success'), "success");
+            new_toast(trans('accounts.delete_success'), "success");
             onload();
         }
         else {
-            new_popup(trans('accounts.delete_error'), "error")
+            new_toast(trans('accounts.delete_error'), "error")
         }
     }
     xhr.send(JSON.stringify({ id }));
