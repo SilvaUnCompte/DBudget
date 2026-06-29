@@ -3,3 +3,4 @@ assets/vendors
 .vscode
 .env
 /database/migrations
+/vendor
